@@ -29,6 +29,12 @@
     ]
   },
   {
+    "id": "cards-selfhelp",
+    "components": [
+      "card"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"

@@ -1,0 +1,47 @@
+{
+  "templates": [
+    {
+      "name": "quick-help-page",
+      "urls": [
+        "https://www.dishtv.in/get-help/quick-help.html"
+      ],
+      "description": "DishTV quick help page with support options and self-service tools",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [".cmp-teaser--contact-us-banner"]
+        },
+        {
+          "name": "cards-selfhelp",
+          "instances": [".container--selfhelp-teaser-container"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Sub-navigation bar",
+          "selector": "#quick-help-navbar",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [".cmp-navbarlist--secondary-navbar-list .external-container"]
+        },
+        {
+          "id": "section-2",
+          "name": "Hero banner",
+          "selector": ".cmp-teaser--contact-us-banner",
+          "style": null,
+          "blocks": ["hero-banner"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Self-help cards grid",
+          "selector": ".container--selfhelp-teaser-container",
+          "style": "dark",
+          "blocks": ["cards-selfhelp"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

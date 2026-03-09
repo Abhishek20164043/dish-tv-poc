@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-selfhelp",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-03-09T10:38:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/get-help/quick-help.html",
+    "originPage": "DishTV Quick Help page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "self-help",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + heading + description",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "self-service help pages",
+      "quick action cards with icons",
+      "support/troubleshooting option grids"
+    ],
+    "notSuitableFor": [
+      "product showcase cards with large images",
+      "blog article cards",
+      "team member cards with photos"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/get-help/quick-help"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-09T10:38:00.000Z"
+  }
+}

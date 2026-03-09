@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.dishtv.in/get-help/quick-help.html",
+  "path": "get-help/quick-help",
+  "timestamp": "2026-03-09T10:48:06.552Z",
+  "title": "Empower Yourself with our Do-It-Yourself Feature | Dish Tv",
+  "template": "quick-help-page",
+  "blocks": [
+    "hero-banner",
+    "cards-selfhelp"
+  ]
+}

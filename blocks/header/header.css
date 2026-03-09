@@ -1,12 +1,13 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: #fff;
   width: 100%;
   z-index: 2;
   position: fixed;
   height: var(--nav-height);
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 header nav {
@@ -22,6 +23,7 @@ header nav {
   flex: 1;
   padding: 0 24px;
   font-family: var(--body-font-family);
+  color: #333;
 }
 
 header nav[aria-expanded='true'] {
@@ -71,7 +73,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: #fff;
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -150,8 +152,8 @@ header .nav-brand {
 header nav .nav-brand img {
   width: auto;
   height: 100%;
-  max-height: calc(var(--nav-height) - 16px);
-  max-width: 128px;
+  max-height: 50px;
+  max-width: 120px;
 }
 
 /* sections */
@@ -160,6 +162,14 @@ header nav .nav-sections {
   flex: 1 1 auto;
   display: none;
   visibility: hidden;
+}
+
+header nav .nav-sections a:any-link {
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 header nav[aria-expanded='true'] .nav-sections {
@@ -270,6 +280,47 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header nav .nav-tools p {
+  margin: 0;
+}
+
+header nav .nav-tools a:any-link {
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.26px;
+}
+
+header nav .nav-tools a.button:any-link {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0;
+  white-space: nowrap;
+}
+
+header nav .nav-tools a.button:hover {
+  background-color: transparent;
+  color: #f04c23;
+}
+
+/* INSTANT RECHARGE highlight */
+header nav .nav-tools p:first-child a:any-link,
+header nav .nav-tools p:first-child a.button:any-link {
+  color: #f04c23;
+  font-weight: 500;
 }
 
 /* containers */
@@ -307,3 +358,4 @@ header .nav-bottom-container:empty {
     padding: 0 32px;
   }
 }
+

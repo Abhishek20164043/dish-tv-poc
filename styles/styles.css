@@ -37,7 +37,7 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 84px;
   --header-height: var(--nav-height);
 }
 
@@ -257,6 +257,74 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+main .section.dark {
+  background-color: #1a1a1a;
+  color: #e4e4e4;
+  margin: 0;
+  padding: 60px 0;
+}
+
 .section.hidden {
   display: none;
+}
+
+/* DishTV dark page section */
+main .section.cards-selfhelp-container {
+  background-color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+main .section.cards-selfhelp-container > div {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Sub-navigation bar (default content) */
+main .section.cards-selfhelp-container > div > ul:first-child {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0 60px;
+  background-color: #000;
+  gap: 0;
+}
+
+main .section.cards-selfhelp-container > div > ul:first-child li {
+  padding: 24px 16px;
+  margin-left: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+main .section.cards-selfhelp-container > div > ul:first-child li a {
+  color: #828282;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28px;
+  text-decoration: none;
+}
+
+main .section.cards-selfhelp-container > div > ul:first-child li a:hover {
+  color: #fff;
+}
+
+/* Active sub-navigation item (QUICK HELP) */
+main .section.cards-selfhelp-container > div > ul:first-child li:nth-child(3) a {
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+}
+
+main .section.cards-selfhelp-container > div > ul:first-child li:nth-child(3) a::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #f04c23;
 }

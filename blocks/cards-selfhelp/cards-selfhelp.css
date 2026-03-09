@@ -1,0 +1,139 @@
+/* Cards Selfhelp - Dark card grid with icons, titles, descriptions */
+
+.cards-selfhelp-container .cards-selfhelp-wrapper {
+  max-width: 1460px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.cards-selfhelp > ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 20px;
+  max-width: 680px;
+}
+
+.cards-selfhelp > ul > li {
+  background-color: #333;
+  border-radius: 6px;
+  padding: 20px;
+  min-height: 334px;
+  position: relative;
+  border: none;
+}
+
+/* Hide the "card" item label (first child div) */
+.cards-selfhelp > ul > li > div:first-child {
+  display: none;
+}
+
+/* Icon image */
+.cards-selfhelp .cards-selfhelp-card-image {
+  line-height: 0;
+}
+
+.cards-selfhelp .cards-selfhelp-card-image p {
+  margin: 0;
+}
+
+.cards-selfhelp .cards-selfhelp-card-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Card body / text content */
+.cards-selfhelp .cards-selfhelp-card-body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card titles */
+.cards-selfhelp .cards-selfhelp-card-body h1,
+.cards-selfhelp .cards-selfhelp-card-body h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26.4px;
+  letter-spacing: 0.44px;
+  padding-top: 20px;
+  margin: 0;
+}
+
+/* Card description paragraphs */
+.cards-selfhelp .cards-selfhelp-card-body p {
+  color: #e4e4e4;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  margin: 12px 0 0;
+}
+
+/* Move pre-heading note (e.g. "Allow 15 minutes") to bottom */
+.cards-selfhelp .cards-selfhelp-card-body > p:first-child:has(+ h2),
+.cards-selfhelp .cards-selfhelp-card-body > p:first-child:has(+ h1) {
+  order: 99;
+  font-size: 13px;
+  color: #999;
+  margin-top: auto;
+}
+
+/* Links inside card descriptions (phone numbers) */
+.cards-selfhelp .cards-selfhelp-card-body a:any-link {
+  color: #f04c23;
+  text-decoration: underline;
+}
+
+.cards-selfhelp .cards-selfhelp-card-body a:hover {
+  color: #ee4823;
+}
+
+/* CTA button container */
+.cards-selfhelp .cards-selfhelp-card-body .button-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+}
+
+/* CTA button styling */
+.cards-selfhelp .cards-selfhelp-card-body a.button:any-link {
+  background-color: #f04c23;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 25px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.65px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+}
+
+.cards-selfhelp .cards-selfhelp-card-body a.button:hover {
+  background-color: #ee4823;
+}
+
+/* Tablet: 2 columns */
+@media (width <= 1199px) {
+  .cards-selfhelp > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (width <= 599px) {
+  .cards-selfhelp > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-selfhelp > ul > li {
+    min-height: auto;
+    padding-bottom: 70px;
+  }
+}
