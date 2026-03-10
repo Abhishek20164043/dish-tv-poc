@@ -211,6 +211,7 @@ footer .footer .section:nth-child(4) > div > p:first-child a:hover {
 /* Footer logo */
 footer div.footer .section:nth-child(4) > div > p:nth-child(n) img {
   max-width: 120px;
+  height: auto;
   margin: 16px auto 8px;
   display: block;
 }
