@@ -34,10 +34,13 @@ footer a.button:hover {
 /* Section 1: "Can we help you with something?" */
 footer .footer .section:first-child {
   background-color: #fff;
-  padding: 24px 32px 16px;
+  padding: 53px 48px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 6px;
   margin: 24px 24px 0;
+  box-shadow: 0 4px 30px rgb(0 0 0 / 15%);
+  position: relative;
+  z-index: 2;
 }
 
 footer .footer .section:first-child h2 {
@@ -190,7 +193,7 @@ footer .footer .section:nth-child(3) > div > p a:hover img {
 /* Section 4: Legal links + copyright */
 footer .footer .section:nth-child(4) {
   padding: 24px 0;
-  text-align: center;
+  text-align: left;
 }
 
 footer .footer .section:nth-child(4) > div > p:first-child {
@@ -212,7 +215,7 @@ footer .footer .section:nth-child(4) > div > p:first-child a:hover {
 footer div.footer .section:nth-child(4) > div > p:nth-child(n) img {
   max-width: 120px;
   height: auto;
-  margin: 16px auto 8px;
+  margin: 16px 0 8px;
   display: block;
 }
 
@@ -220,7 +223,7 @@ footer div.footer .section:nth-child(4) > div > p:nth-child(n) img {
 footer .footer .section:nth-child(4) > div > p:last-child {
   color: #828282;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   margin-top: 8px;
 }
 
@@ -228,7 +231,7 @@ footer .footer .section:nth-child(4) > div > p:last-child {
   footer .footer > div {
     display: grid;
     grid-template-columns: 1fr auto;
-    max-width: 1440px;
+    max-width: 1680px;
     padding: 40px 80px 24px;
   }
 

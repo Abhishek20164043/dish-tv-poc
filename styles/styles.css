@@ -275,7 +275,8 @@ main .section.cards-selfhelp-container {
   padding: 0;
 }
 
-main .section.cards-selfhelp-container > div {
+main .section.cards-selfhelp-container > .hero-banner-wrapper,
+main .section.cards-selfhelp-container > .default-content-wrapper {
   max-width: unset;
   padding: 0;
 }

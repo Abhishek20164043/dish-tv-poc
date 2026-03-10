@@ -8,7 +8,7 @@
   margin: 0;
 }
 
-.hero-banner-container > div {
+.hero-banner-container > .hero-banner-wrapper {
   padding: 0;
   max-width: unset;
 }
