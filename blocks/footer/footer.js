@@ -16,5 +16,27 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // Transform dealer pincode link into input field
+  const dealerLink = footer.querySelector('a[href*="dealer-locator"]');
+  if (dealerLink) {
+    const p = dealerLink.closest('p');
+    if (p) {
+      const form = document.createElement('form');
+      form.className = 'dealer-pincode-form';
+      form.innerHTML = `
+        <input type="text" placeholder="Enter Pincode" maxlength="6" pattern="[0-9]*" inputmode="numeric">
+        <button type="submit" aria-label="Search dealer">&#10148;</button>
+      `;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pincode = form.querySelector('input').value.trim();
+        if (pincode) {
+          window.location.href = `/dealer-locator.html?pincode=${pincode}`;
+        }
+      });
+      p.replaceWith(form);
+    }
+  }
+
   block.append(footer);
 }

@@ -165,7 +165,45 @@ footer .footer .section:nth-child(3) > div > h4:first-child {
   margin-top: 0;
 }
 
-/* Dealer link */
+/* Dealer pincode form */
+footer .dealer-pincode-form {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #666;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+
+footer .dealer-pincode-form input {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  font-family: var(--body-font-family);
+}
+
+footer .dealer-pincode-form input::placeholder {
+  color: #666;
+}
+
+footer .dealer-pincode-form button {
+  background: transparent;
+  border: none;
+  color: #f04c23;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+footer .dealer-pincode-form button:hover {
+  color: #fff;
+}
+
+/* Dealer link fallback */
 footer .footer .section:nth-child(3) > div > p a:any-link {
   color: #999;
   text-decoration: none;
