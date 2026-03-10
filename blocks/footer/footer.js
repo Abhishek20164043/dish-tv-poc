@@ -38,5 +38,31 @@ export default async function decorate(block) {
     }
   }
 
+  // Accordion toggle for footer category sections (mobile)
+  const linkSection = footer.querySelector('.section:nth-child(2)');
+  if (linkSection) {
+    const headings = linkSection.querySelectorAll('h4');
+    headings.forEach((h4) => {
+      const ul = h4.nextElementSibling;
+      if (ul && ul.tagName === 'UL') {
+        h4.classList.add('footer-accordion');
+        ul.classList.add('footer-accordion-content');
+        h4.addEventListener('click', () => {
+          const isOpen = h4.classList.contains('active');
+          // Close all
+          linkSection.querySelectorAll('.footer-accordion.active').forEach((a) => {
+            a.classList.remove('active');
+            a.nextElementSibling.classList.remove('active');
+          });
+          // Toggle current
+          if (!isOpen) {
+            h4.classList.add('active');
+            ul.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
   block.append(footer);
 }
