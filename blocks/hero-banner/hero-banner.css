@@ -88,7 +88,7 @@
 /* Desktop */
 @media (width >= 900px) {
   .hero-banner {
-    min-height: 525px;
+    height: 525px;
   }
 
   .hero-banner > div:nth-child(2) {
