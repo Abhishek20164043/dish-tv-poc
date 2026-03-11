@@ -6,6 +6,8 @@
 
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+const INITIAL_VISIBLE = 4;
+
 export default function decorate(block) {
   [...block.children].forEach((row) => {
     // decorate accordion item label
@@ -23,4 +25,23 @@ export default function decorate(block) {
     details.append(summary, body);
     row.replaceWith(details);
   });
+
+  /* Load More: hide items beyond INITIAL_VISIBLE */
+  const items = block.querySelectorAll('details');
+  if (items.length > INITIAL_VISIBLE) {
+    items.forEach((item, i) => {
+      if (i >= INITIAL_VISIBLE) item.classList.add('accordion-faq-hidden');
+    });
+
+    const loadMore = document.createElement('button');
+    loadMore.className = 'accordion-faq-load-more';
+    loadMore.textContent = 'LOAD MORE FAQs';
+    loadMore.addEventListener('click', () => {
+      block.querySelectorAll('.accordion-faq-hidden').forEach((item) => {
+        item.classList.remove('accordion-faq-hidden');
+      });
+      loadMore.remove();
+    });
+    block.append(loadMore);
+  }
 }

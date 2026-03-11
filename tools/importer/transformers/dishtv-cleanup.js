@@ -18,6 +18,12 @@ export default function transform(hookName, element, payload) {
       '.user-auth-social-modal',
       '#whatsAppLogo',
       '.whatsapp-bot-logo',
+      // New connection page hidden popups/modals
+      '.packcomparisoncomponent',
+      '.newconnectionpopup',
+      '.newconnectionflexipoup',
+      // Stepper/steps list (hidden on original page, display:none)
+      'ol.cmp-tabs__tablist',
     ]);
   }
   if (hookName === TransformHook.afterTransform) {

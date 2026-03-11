@@ -209,7 +209,28 @@
         "https://www.dishtv.in/instant-recharge/payment.html"
       ],
       "description": "DishTV instant recharge payment page for DTH recharge and payment processing",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "carousel-cashback",
+          "instances": [
+            ".instant-recharge-cashbackoffers-carousel"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Cashback Offers",
+          "selector": ".instant-recharge-cashbackoffers-carousel",
+          "style": null,
+          "blocks": [
+            "carousel-cashback"
+          ],
+          "defaultContent": [
+            ".text--instant-cashback-text"
+          ]
+        }
+      ]
     },
     {
       "name": "manage-channels-page",
@@ -224,8 +245,55 @@
       "urls": [
         "https://www.dishtv.in/new-dth-connection.html"
       ],
-      "description": "DishTV new DTH connection page for new customer registration and setup",
-      "blocks": []
+      "description": "DishTV new DTH connection page for new customer registration and setup with product plans and FAQs",
+      "blocks": [
+        {
+          "name": "cards-pricing",
+          "instances": [
+            ".container--select-product-container"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            ".container--investorFAQ"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Product Plans",
+          "selector": ".revampedncproducts",
+          "style": null,
+          "blocks": [
+            "cards-pricing"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "CTA Missed Call",
+          "selector": ".text--viewcomparison",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".text--viewcomparison .cmp-text"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Frequently Asked Questions",
+          "selector": ".container--investorFAQ",
+          "style": null,
+          "blocks": [
+            "accordion-faq"
+          ],
+          "defaultContent": [
+            ".container--investorFAQ .cmp-text"
+          ]
+        }
+      ]
     },
     {
       "name": "my-account-page",

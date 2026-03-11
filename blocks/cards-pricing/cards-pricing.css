@@ -1,27 +1,435 @@
+/* Cards Pricing Block - DishTV Product Cards */
 .cards-pricing > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 24px;
 }
 
 .cards-pricing > ul > li {
-  border: 1px solid #dadada;
+  border: 2px solid rgb(213 205 205 / 24%);
+  border-radius: 8px;
   background-color: var(--background-color);
+  box-shadow: rgb(150 146 146 / 20%) 0 1px 15px 1px;
+  overflow: hidden;
+  position: relative;
 }
 
-.cards-pricing .cards-pricing-card-body {
-  margin: 16px;
+/* Featured card (first) */
+.cards-pricing > ul > li.cards-pricing-featured {
+  border: 2px solid #ee4823;
 }
 
-.cards-pricing .cards-pricing-card-image {
-  line-height: 0;
+/* --- Card Header: orange gradient bg + product image + info --- */
+.cards-pricing-header {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
 }
 
-.cards-pricing > ul > li img {
+/* Blurb label (diagonal orange tab at top-left) */
+.cards-pricing-blurb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 130px;
+  height: auto;
+}
+
+.cards-pricing-blurb img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+}
+
+/* Card background (orange gradient) */
+.cards-pricing-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  z-index: 1;
+}
+
+.cards-pricing-bg img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+/* Product image (set-top box) - without antenna (default visible) */
+.cards-pricing-product {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 45%;
+  z-index: 2;
+}
+
+.cards-pricing-product img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Product image - with antenna (hidden by default) */
+.cards-pricing-antenna-img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 45%;
+  z-index: 2;
+}
+
+.cards-pricing-antenna-img img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Product info overlay */
+.cards-pricing-info {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  padding-top: 36px;
+}
+
+.cards-pricing-name {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.cards-pricing-price {
+  font-size: 25px;
+  font-weight: 600;
+  color: #ee4823;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.cards-pricing-desc {
+  font-size: 12px;
+  color: #ee4823;
+  font-weight: 400;
+}
+
+/* --- Key Features section --- */
+.cards-pricing-features {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+.cards-pricing-features-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ee4823;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.cards-pricing-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cards-pricing-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cards-pricing-feature-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.cards-pricing-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cards-pricing-feature-item p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #000;
+}
+
+/* --- Badges section (2x2 grid) --- */
+.cards-pricing-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+.cards-pricing-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.cards-pricing-badge-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.cards-pricing-badge-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cards-pricing-badge span {
+  font-size: 11px;
+  font-weight: 500;
+  color: #000;
+  line-height: 1.2;
+}
+
+/* --- Bottom section: Antenna toggle + Select button --- */
+.cards-pricing-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+/* --- Antenna toggle --- */
+.cards-pricing-antenna {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cards-pricing-antenna-label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.cards-pricing-antenna-options {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cards-pricing-antenna-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+}
+
+.cards-pricing-antenna-option input[type="radio"] {
+  accent-color: #f04c23;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* --- Select button (inside bottom section) --- */
+.cards-pricing-select {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: #ee4823;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+}
+
+.cards-pricing-select:hover {
+  background-color: #d9411d;
+}
+
+/* --- Language Selection Modal --- */
+.cards-pricing-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cards-pricing-modal-overlay[hidden] {
+  display: none;
+}
+
+.cards-pricing-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+}
+
+.cards-pricing-modal h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 20px;
+  text-align: center;
+  padding-right: 24px;
+}
+
+.cards-pricing-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.cards-pricing-modal-close:hover {
+  color: #333;
+}
+
+.cards-pricing-lang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cards-pricing-lang-btn {
+  padding: 10px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cards-pricing-lang-btn:hover {
+  border-color: #f04c23;
+  color: #f04c23;
+}
+
+.cards-pricing-lang-btn.selected {
+  background-color: #f04c23;
+  color: #fff;
+  border-color: #f04c23;
+}
+
+.cards-pricing-lang-continue {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #f04c23;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cards-pricing-lang-continue:hover {
+  background-color: #d9411d;
+}
+
+/* --- Carousel mode: horizontal scroll with snap --- */
+.cards-pricing > ul.cards-pricing-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 16px;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.cards-pricing > ul.cards-pricing-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-pricing > ul.cards-pricing-carousel > li {
+  flex: 0 0 80%;
+  scroll-snap-align: start;
+  max-width: 380px;
+}
+
+/* --- Dot indicators --- */
+.cards-pricing-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.cards-pricing-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.cards-pricing-dot.active {
+  background-color: #f04c23;
+}
+
+/* --- Desktop: show all cards in grid, no carousel --- */
+@media (width >= 900px) {
+  .cards-pricing > ul.cards-pricing-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .cards-pricing > ul.cards-pricing-carousel > li {
+    flex: none;
+    max-width: none;
+  }
+
+  .cards-pricing-dots {
+    display: none;
+  }
 }

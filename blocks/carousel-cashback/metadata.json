@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-cashback",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-03-11T07:09:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/instant-recharge/payment.html",
+    "originPage": "DishTV instant recharge payment page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "cashback-offers",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "image + description + CTA link",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "cashback offer carousels",
+      "payment partner promotions",
+      "compact teaser card slides"
+    ],
+    "notSuitableFor": [
+      "full-width hero banners",
+      "large image carousels",
+      "product showcases"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/instant-recharge/payment"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T07:09:00.000Z"
+  }
+}

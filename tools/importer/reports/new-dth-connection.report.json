@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.dishtv.in/new-dth-connection.html",
+  "path": "new-dth-connection",
+  "timestamp": "2026-03-11T14:04:54.791Z",
+  "title": "New DTH Connection Online – Free Installation & HD Set Top Box | DishTV",
+  "template": "new-connection-page",
+  "blocks": [
+    "cards-pricing",
+    "accordion-faq"
+  ]
+}
