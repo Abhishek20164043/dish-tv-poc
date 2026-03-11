@@ -258,7 +258,9 @@ export default function decorate(block) {
       }
 
       // --- Badges section ---
-      const allP = textCol.querySelectorAll('p');
+      // Use :scope > p to only match direct <p> children of textCol,
+      // not <p> elements nested inside <ul><li> (DA wraps images in <p><picture>)
+      const allP = textCol.querySelectorAll(':scope > p');
       allP.forEach((p) => {
         if (p.querySelector('img') && !p.querySelector('a')) {
           const badgeSection = document.createElement('div');
