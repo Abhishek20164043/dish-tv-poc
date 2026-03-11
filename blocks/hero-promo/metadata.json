@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-promo",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "purpose": "promo-banner",
+    "imagePattern": "background-image"
+  },
+  "contentPattern": {
+    "structure": "background-image + heading + description + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "full-width promotional banners with background images",
+      "mid-page hero banners with CTA",
+      "HD content promotion sections"
+    ],
+    "notSuitableFor": [
+      "form-based hero sections",
+      "hero sections without images",
+      "hero sections with multiple columns"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}

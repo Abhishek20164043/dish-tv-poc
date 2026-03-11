@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-promo",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "hero-promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "background-image + heading + description + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "hero banner carousels with promotional slides",
+      "OTT content promotional carousels",
+      "full-width image carousels with overlaid text"
+    ],
+    "notSuitableFor": [
+      "thumbnail gallery carousels",
+      "text-only carousels",
+      "card-based carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}

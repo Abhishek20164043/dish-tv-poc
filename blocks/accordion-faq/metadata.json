@@ -1,0 +1,39 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "faq",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + expandable Q&A items + show more button",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ sections with expandable Q&A items",
+      "help center questions",
+      "product information accordions"
+    ],
+    "notSuitableFor": [
+      "navigation accordions with icons",
+      "multi-level nested accordions",
+      "accordion menus with images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}

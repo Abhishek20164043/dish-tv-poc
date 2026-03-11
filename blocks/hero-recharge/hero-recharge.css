@@ -1,0 +1,47 @@
+.hero-recharge-container .hero-recharge-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-recharge {
+  position: relative;
+  padding: 40px 24px;
+  min-height: 300px;
+}
+
+.hero-recharge h1,
+.hero-recharge h2,
+.hero-recharge h3,
+.hero-recharge h4,
+.hero-recharge h5,
+.hero-recharge h6,
+.hero-recharge p {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--background-color);
+}
+
+.hero-recharge.no-image * {
+  color: var(--text-color);
+}
+
+.hero-recharge picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.hero-recharge img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (width >= 900px) {
+  .hero-recharge {
+    padding: 40px 32px;
+  }
+}

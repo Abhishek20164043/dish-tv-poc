@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-app",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "grey",
+    "density": "spacious",
+    "purpose": "app-promo",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "phone mockup image + heading + app buttons + feature list + CTA",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "mobile app promotion sections",
+      "two-column layouts with device mockup and features",
+      "product showcase with image and feature list"
+    ],
+    "notSuitableFor": [
+      "text-only columns",
+      "multi-column grids",
+      "comparison tables"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}

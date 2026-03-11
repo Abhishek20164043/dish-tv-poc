@@ -9,11 +9,15 @@
       "blocks": [
         {
           "name": "hero-banner",
-          "instances": [".cmp-teaser--contact-us-banner"]
+          "instances": [
+            ".cmp-teaser--contact-us-banner"
+          ]
         },
         {
           "name": "cards-selfhelp",
-          "instances": [".container--selfhelp-teaser-container"]
+          "instances": [
+            ".container--selfhelp-teaser-container"
+          ]
         }
       ],
       "sections": [
@@ -23,14 +27,18 @@
           "selector": "#quick-help-navbar",
           "style": null,
           "blocks": [],
-          "defaultContent": [".cmp-navbarlist--secondary-navbar-list .external-container"]
+          "defaultContent": [
+            ".cmp-navbarlist--secondary-navbar-list .external-container"
+          ]
         },
         {
           "id": "section-2",
           "name": "Hero banner",
           "selector": ".cmp-teaser--contact-us-banner",
           "style": null,
-          "blocks": ["hero-banner"],
+          "blocks": [
+            "hero-banner"
+          ],
           "defaultContent": []
         },
         {
@@ -38,10 +46,194 @@
           "name": "Self-help cards grid",
           "selector": ".container--selfhelp-teaser-container",
           "style": "dark",
-          "blocks": ["cards-selfhelp"],
+          "blocks": [
+            "cards-selfhelp"
+          ],
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.dishtv.in/"
+      ],
+      "description": "DishTV homepage with hero carousel, product showcases, recharge options, and promotional content",
+      "blocks": [
+        {
+          "name": "carousel-promo",
+          "instances": [
+            ".container--bannercontainer",
+            ".carousel--homepagealexacarousel"
+          ]
+        },
+        {
+          "name": "hero-recharge",
+          "instances": [
+            ".container--bannerrechargecontainer"
+          ]
+        },
+        {
+          "name": "cards-pack",
+          "instances": [
+            ".container--yourguide-container"
+          ]
+        },
+        {
+          "name": "accordion-nav",
+          "instances": [
+            ".container--yourguide-container .accordion"
+          ]
+        },
+        {
+          "name": "columns-app",
+          "instances": [
+            ".container--manageyouraccounthomepage"
+          ]
+        },
+        {
+          "name": "hero-promo",
+          "instances": [
+            "#spectacular-banner"
+          ]
+        },
+        {
+          "name": "tabs-channel",
+          "instances": [
+            "#grid-carousel-homepage-container"
+          ]
+        },
+        {
+          "name": "cards-pricing",
+          "instances": [
+            ".container--select-product-container"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            ".container--investorFAQ"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero Banner Carousel with Recharge Form",
+          "selector": ".container--bannercontainer",
+          "style": null,
+          "blocks": [
+            "carousel-promo",
+            "hero-recharge"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Your Guide to Creating a Pack",
+          "selector": ".container--yourguide-container",
+          "style": null,
+          "blocks": [
+            "cards-pack",
+            "accordion-nav"
+          ],
+          "defaultContent": [
+            ".your-guide-set-container .cmp-text"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Manage Your Account",
+          "selector": ".container--manageyouraccounthomepage",
+          "style": "grey",
+          "blocks": [
+            "columns-app"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "See the World Come Alive",
+          "selector": "#spectacular-banner",
+          "style": null,
+          "blocks": [
+            "hero-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "OTT Content Carousel",
+          "selector": ".carousel--homepagealexacarousel",
+          "style": null,
+          "blocks": [
+            "carousel-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Snack on the Content You Love",
+          "selector": "#grid-carousel-homepage-container",
+          "style": null,
+          "blocks": [
+            "tabs-channel"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "Dish HD Entertainment Starts Here",
+          "selector": ".container--select-product-container",
+          "style": null,
+          "blocks": [
+            "cards-pricing"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-8",
+          "name": "Frequently Asked Questions",
+          "selector": ".container--investorFAQ",
+          "style": null,
+          "blocks": [
+            "accordion-faq"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "payment-page",
+      "urls": [
+        "https://www.dishtv.in/instant-recharge/payment.html"
+      ],
+      "description": "DishTV instant recharge payment page for DTH recharge and payment processing",
+      "blocks": []
+    },
+    {
+      "name": "manage-channels-page",
+      "urls": [
+        "https://www.dishtv.in/manage-my-packs/manage-channels.html"
+      ],
+      "description": "DishTV manage channels page for adding or removing channels from subscription packs",
+      "blocks": []
+    },
+    {
+      "name": "new-connection-page",
+      "urls": [
+        "https://www.dishtv.in/new-dth-connection.html"
+      ],
+      "description": "DishTV new DTH connection page for new customer registration and setup",
+      "blocks": []
+    },
+    {
+      "name": "my-account-page",
+      "urls": [
+        "https://www.dishtv.in/my-account.html"
+      ],
+      "description": "DishTV my account dashboard page for subscriber account management",
+      "blocks": []
     }
   ]
 }

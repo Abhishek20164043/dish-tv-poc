@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.dishtv.in/",
+  "path": "index",
+  "timestamp": "2026-03-11T06:51:18.364Z",
+  "title": "DishTV Recharge Online & New DTH Connection | Channel Packs & Offers",
+  "template": "homepage",
+  "blocks": [
+    "carousel-promo",
+    "carousel-promo",
+    "carousel-promo",
+    "hero-recharge",
+    "cards-pack",
+    "accordion-nav",
+    "columns-app",
+    "hero-promo",
+    "tabs-channel",
+    "cards-pricing",
+    "accordion-faq"
+  ]
+}

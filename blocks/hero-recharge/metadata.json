@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-recharge",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "recharge-form",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + input field + CTA button",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "recharge/payment form overlays",
+      "compact form sections with dark backgrounds",
+      "quick action forms"
+    ],
+    "notSuitableFor": [
+      "full-width hero banners",
+      "hero sections with images",
+      "content-heavy hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "variantName": "accordion-nav",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-03-11T06:23:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.dishtv.in/",
+    "originPage": "DishTV Homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "navigation",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + label + expandable content",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "navigation accordions with expandable options",
+      "add/delete channel selectors",
+      "explore all packs expandable links"
+    ],
+    "notSuitableFor": [
+      "FAQ accordions",
+      "content-heavy accordions",
+      "text-only expandable sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-03-11T06:23:00.000Z"
+  }
+}
