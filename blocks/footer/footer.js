@@ -25,7 +25,7 @@ export default async function decorate(block) {
       form.className = 'dealer-pincode-form';
       form.innerHTML = `
         <input type="text" placeholder="Enter Pincode" maxlength="6" pattern="[0-9]*" inputmode="numeric">
-        <button type="submit" aria-label="Search dealer">&#10148;</button>
+        <button type="submit" aria-label="Search dealer">&#8594;</button>
       `;
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -62,6 +62,19 @@ export default async function decorate(block) {
         });
       }
     });
+  }
+
+  // Clean up pipe separators in legal links (section 4)
+  const legalSection = footer.querySelector('.section:nth-child(4)');
+  if (legalSection) {
+    const legalP = legalSection.querySelector('p');
+    if (legalP) {
+      [...legalP.childNodes].forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent.includes('|')) {
+          node.remove();
+        }
+      });
+    }
   }
 
   block.append(footer);

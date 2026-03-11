@@ -3,7 +3,7 @@
 .cards-selfhelp-container .cards-selfhelp-wrapper {
   max-width: 1460px;
   margin: 0 auto;
-  padding: 60px 24px 257px;
+  padding: 60px 24px 200px;
 }
 
 .cards-selfhelp > ul {
@@ -11,8 +11,9 @@
   margin: 0 auto;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 329px);
   gap: 40px 20px;
+  justify-content: center;
 }
 
 .cards-selfhelp > ul > li {
@@ -118,10 +119,10 @@
   background-color: #ee4823;
 }
 
-/* Tablet: 2 columns */
-@media (width <= 1199px) {
+/* Desktop: 3 columns */
+@media (width >= 1200px) {
   .cards-selfhelp > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 329px);
   }
 }
 
