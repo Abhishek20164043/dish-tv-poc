@@ -2,8 +2,22 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const items = [...block.children];
+
+  // Two-column layout: left = accordion list, right = image display
+  const layout = document.createElement('div');
+  layout.className = 'cards-pack-layout';
+
+  const left = document.createElement('div');
+  left.className = 'cards-pack-left';
+
+  const right = document.createElement('div');
+  right.className = 'cards-pack-right';
+
   const accordion = document.createElement('div');
   accordion.className = 'cards-pack-accordion';
+
+  // Collect images for the right-side display
+  const images = [];
 
   items.forEach((row, i) => {
     const num = String(i + 1).padStart(2, '0');
@@ -37,13 +51,9 @@ export default function decorate(block) {
 
     header.append(numSpan, titleSpan, iconSpan);
 
-    // Create body panel
+    // Create body panel (description + CTA only, image goes to right column)
     const body = document.createElement('div');
     body.className = 'cards-pack-item-body';
-
-    // Build body content: description on left, image on right
-    const bodyContent = document.createElement('div');
-    bodyContent.className = 'cards-pack-item-content';
 
     const descCol = document.createElement('div');
     descCol.className = 'cards-pack-item-desc';
@@ -51,18 +61,11 @@ export default function decorate(block) {
     // Move description paragraphs (skip the h3 title and duplicate plain text)
     const paragraphs = bodyDiv.querySelectorAll('p');
     paragraphs.forEach((p) => {
-      // Skip plain text paragraphs that duplicate link text
       if (!p.querySelector('a') && p.nextElementSibling?.querySelector('a')) return;
       descCol.append(p);
     });
 
-    const imgCol = document.createElement('div');
-    imgCol.className = 'cards-pack-item-image';
-    if (imageDiv.querySelector('picture')) {
-      imgCol.append(imageDiv.querySelector('picture'));
-    }
-
-    bodyContent.append(descCol, imgCol);
+    body.append(descCol);
 
     // Extract the CTA link
     const ctaLink = bodyDiv.querySelector('a');
@@ -72,12 +75,19 @@ export default function decorate(block) {
       const ctaClone = ctaLink.cloneNode(true);
       ctaClone.className = 'cards-pack-cta-link';
       ctaWrapper.append(ctaClone);
-      body.append(bodyContent, ctaWrapper);
-    } else {
-      body.append(bodyContent);
+      body.append(ctaWrapper);
     }
 
-    // Click handler - only one open at a time
+    // Collect image for right column
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'cards-pack-image-panel';
+    imgWrapper.dataset.index = i;
+    if (i === 0) imgWrapper.classList.add('active');
+    const picture = imageDiv.querySelector('picture');
+    if (picture) imgWrapper.append(picture);
+    images.push(imgWrapper);
+
+    // Click handler - toggle accordion and switch image
     header.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       // Close all items
@@ -85,10 +95,17 @@ export default function decorate(block) {
         el.classList.remove('active');
         el.querySelector('.cards-pack-item-header')?.setAttribute('aria-expanded', 'false');
       });
+      // Hide all images
+      right.querySelectorAll('.cards-pack-image-panel.active').forEach((el) => {
+        el.classList.remove('active');
+      });
       // Open clicked item (unless it was already open)
       if (!isActive) {
         item.classList.add('active');
         header.setAttribute('aria-expanded', 'true');
+        // Show corresponding image
+        const panel = right.querySelector(`.cards-pack-image-panel[data-index="${i}"]`);
+        if (panel) panel.classList.add('active');
       }
     });
 
@@ -96,6 +113,11 @@ export default function decorate(block) {
     accordion.append(item);
   });
 
+  // Assemble layout
+  left.append(accordion);
+  images.forEach((img) => right.append(img));
+  layout.append(left, right);
+
   block.textContent = '';
-  block.append(accordion);
+  block.append(layout);
 }

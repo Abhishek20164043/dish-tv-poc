@@ -3,12 +3,29 @@
   padding: 24px 20px 40px;
 }
 
-.cards-pack-accordion {
-  max-width: none;
+/* Two-column layout */
+.cards-pack-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.cards-pack-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.cards-pack-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-pack-accordion {
   background-color: transparent;
-  border-radius: 0;
-  box-shadow: none;
 }
 
 .cards-pack-item {
@@ -108,14 +125,7 @@
   padding: 0 0 24px;
 }
 
-.cards-pack-item-content {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-}
-
 .cards-pack-item-desc {
-  flex: 1;
   color: #ccc;
   font-size: 15px;
   line-height: 1.6;
@@ -124,22 +134,6 @@
 .cards-pack-item-desc p {
   margin: 0 0 8px;
   color: #ccc;
-}
-
-.cards-pack-item-image {
-  flex: 1;
-  max-width: 50%;
-}
-
-.cards-pack-item-image picture {
-  display: block;
-  line-height: 0;
-}
-
-.cards-pack-item-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
 }
 
 .cards-pack-item-cta {
@@ -167,13 +161,52 @@
   background: none;
 }
 
-/* Mobile responsive */
-@media (width <= 768px) {
-  .cards-pack-item-content {
-    flex-direction: column;
+/* Right column: image panels */
+.cards-pack-image-panel {
+  display: none;
+}
+
+.cards-pack-image-panel.active {
+  display: block;
+}
+
+.cards-pack-image-panel picture {
+  display: block;
+  line-height: 0;
+}
+
+.cards-pack-image-panel img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Desktop: side-by-side layout */
+@media (width >= 900px) {
+  .cards-pack {
+    padding: 70px 0;
   }
 
-  .cards-pack-item-image {
-    max-width: 100%;
+  .cards-pack-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: none;
+    gap: 0;
+  }
+
+  .cards-pack-left {
+    flex: 0 0 50%;
+    padding: 0 40px 0 80px;
+  }
+
+  .cards-pack-right {
+    flex: 0 0 50%;
+    padding: 0 80px 0 40px;
+  }
+
+  .cards-pack-image-panel img {
+    border-radius: 12px;
+    max-height: 500px;
+    object-fit: contain;
   }
 }
