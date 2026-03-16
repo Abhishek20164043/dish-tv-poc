@@ -59,6 +59,6 @@
 
 @media (width >= 900px) {
   .hero-promo {
-    padding: 40px 32px;
+    padding: 0;
   }
 }

@@ -369,17 +369,43 @@ main > .section.carousel-promo-container.accordion-faq-container {
   padding: 0;
 }
 
-/* Columns-app wrapper: full-width grey bg matching original */
+/* Cards-pack wrapper: full-width dark bg matching original */
+main > .section > .cards-pack-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Columns-app wrapper: full-width grey bg with background image matching original */
 main > .section > .columns-app-wrapper {
   max-width: unset;
   padding: 40px 0;
   background-color: rgb(245 245 245);
+  background-image: url('https://www.dishtv.in/content/dam/dishtv-aem-web-platform/homepage/Manage%20account%20container.png');
+  background-size: cover;
+  background-position: center top;
+}
+
+/* Watcho banner (2nd carousel-promo after hero-promo): preserve image aspect ratio */
+main > .section > .hero-promo-wrapper + .carousel-promo-wrapper .carousel-promo-slide {
+  min-height: min(44.55vw, 855px);
+}
+
+main > .section > .hero-promo-wrapper + .carousel-promo-wrapper .carousel-promo-slide-link {
+  min-height: min(44.55vw, 855px);
 }
 
 /* Tabs-channel wrapper: full-width, no constraints */
 main > .section > .tabs-channel-wrapper {
   max-width: unset;
   padding: 0;
+}
+
+/* FAQ heading wrapper: dark bg matching accordion section */
+main > .section.carousel-promo-container.accordion-faq-container > .default-content-wrapper:has(+ .accordion-faq-wrapper) {
+  max-width: unset;
+  padding: 40px 24px 0;
+  background-color: #2d2d2d;
+  text-align: center;
 }
 
 /* Accordion FAQ wrapper: dark bg at wrapper level */
@@ -454,6 +480,7 @@ main > .section > .cards-pricing-wrapper + .default-content-wrapper p {
 /* DishTV footer adjustments */
 footer {
   font-size: var(--body-font-size-s);
+  line-height: 1.2;
 }
 
 footer .footer {
