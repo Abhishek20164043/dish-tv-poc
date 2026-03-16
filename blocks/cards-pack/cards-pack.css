@@ -6,6 +6,9 @@
 .cards-pack-accordion {
   max-width: 800px;
   margin: 0 auto;
+  background-color: #333;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 32px rgb(0 0 0 / 8%);
 }
 
 .cards-pack-item {
@@ -134,7 +137,7 @@
 }
 
 /* Mobile responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .cards-pack-item-content {
     flex-direction: column;
   }

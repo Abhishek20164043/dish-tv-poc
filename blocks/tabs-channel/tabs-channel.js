@@ -3,6 +3,8 @@ import { toClassName } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const ITEMS_PER_RIGHT_PAGE = 4;
+const SNAP_THRESHOLD = 0.15;
+const TRANSITION_SPEED = 300;
 
 function buildShowCard(p) {
   const card = document.createElement('div');
@@ -16,7 +18,6 @@ function buildShowCard(p) {
     card.append(imgWrap);
   }
 
-  // Overlay with show name and meta
   const overlay = document.createElement('div');
   overlay.className = 'tabs-channel-card-overlay';
 
@@ -49,7 +50,6 @@ function processPanel(panel) {
 
   if (showParagraphs.length === 0) return;
 
-  // Split into left (first half) and right (second half)
   const half = Math.ceil(showParagraphs.length / 2);
   const leftItems = showParagraphs.slice(0, half);
   const rightItems = showParagraphs.slice(half);
@@ -58,24 +58,25 @@ function processPanel(panel) {
   const slider = document.createElement('div');
   slider.className = 'tabs-channel-slider';
 
-  // LEFT side: single large featured card
+  // LEFT side: draggable track of large cards
   const leftSide = document.createElement('div');
   leftSide.className = 'tabs-channel-left';
+  const leftTrack = document.createElement('div');
+  leftTrack.className = 'tabs-channel-left-track';
   const leftCards = leftItems.map((p) => {
     const card = buildShowCard(p);
     p.remove();
     return card;
   });
-  leftCards.forEach((card, i) => {
-    if (i > 0) card.setAttribute('hidden', '');
-    leftSide.append(card);
-  });
+  leftCards.forEach((card) => leftTrack.append(card));
+  leftSide.append(leftTrack);
 
-  // RIGHT side: 2×2 grid pages
+  // RIGHT side: draggable track of 2×2 grid pages
   const rightSide = document.createElement('div');
   rightSide.className = 'tabs-channel-right';
+  const rightTrack = document.createElement('div');
+  rightTrack.className = 'tabs-channel-right-track';
   const totalRightPages = Math.ceil(rightItems.length / ITEMS_PER_RIGHT_PAGE);
-  const rightPages = [];
 
   for (let page = 0; page < totalRightPages; page += 1) {
     const pageEl = document.createElement('div');
@@ -86,104 +87,186 @@ function processPanel(panel) {
       pageEl.append(buildShowCard(rightItems[j]));
       rightItems[j].remove();
     }
-    if (page > 0) pageEl.setAttribute('hidden', '');
-    rightPages.push(pageEl);
-    rightSide.append(pageEl);
+    rightTrack.append(pageEl);
   }
+  rightSide.append(rightTrack);
 
   slider.append(leftSide);
   slider.append(rightSide);
 
-  // Navigation arrows
+  // --- Slider state ---
   let currentLeft = 0;
+  const dots = document.createElement('div');
+  dots.className = 'tabs-channel-dots';
+  const totalDots = Math.min(leftCards.length, 7);
+  const dotEls = [];
 
-  const nav = document.createElement('div');
-  nav.className = 'tabs-channel-nav';
+  function setTrackPosition(track, pct, animate) {
+    if (animate) {
+      track.style.transition = `transform ${TRANSITION_SPEED}ms ease`;
+    } else {
+      track.style.transition = 'none';
+    }
+    track.style.transform = `translateX(${pct}%)`;
+  }
 
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'tabs-channel-nav-btn tabs-channel-prev';
-  prevBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>';
-  prevBtn.setAttribute('aria-label', 'Previous slide');
-
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'tabs-channel-nav-btn tabs-channel-next';
-  nextBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>';
-  nextBtn.setAttribute('aria-label', 'Next slide');
-
-  function updateSlider() {
-    // Update left cards: show/hide
-    leftCards.forEach((card, i) => {
-      if (i === currentLeft) card.removeAttribute('hidden');
-      else card.setAttribute('hidden', '');
-    });
-
-    // Calculate right page from left position (proportional sync)
-    const leftProgress = leftCards.length > 1
+  function updateDots() {
+    const progress = leftCards.length > 1
       ? currentLeft / (leftCards.length - 1)
       : 0;
-    const rightPageIndex = Math.min(
+    const activeDot = Math.round(progress * (totalDots - 1));
+    dotEls.forEach((d, i) => {
+      d.classList.toggle('tabs-channel-dot-active', i === activeDot);
+    });
+  }
+
+  function updateActiveCard() {
+    leftCards.forEach((card, i) => {
+      card.classList.toggle('tabs-channel-card-active', i === currentLeft);
+    });
+  }
+
+  function getRightPageForLeft(leftIndex) {
+    const leftProgress = leftCards.length > 1
+      ? leftIndex / (leftCards.length - 1)
+      : 0;
+    return Math.min(
       Math.floor(leftProgress * totalRightPages),
       totalRightPages - 1,
     );
-
-    rightPages.forEach((page, i) => {
-      if (i === rightPageIndex) page.removeAttribute('hidden');
-      else page.setAttribute('hidden', '');
-    });
-
-    prevBtn.disabled = currentLeft === 0;
-    nextBtn.disabled = currentLeft === leftCards.length - 1;
   }
 
-  prevBtn.addEventListener('click', () => {
-    if (currentLeft > 0) {
-      currentLeft -= 1;
-      updateSlider();
+  function snapTo(index, animate) {
+    if (index < 0 || index >= leftCards.length) return;
+    currentLeft = index;
+    setTrackPosition(leftTrack, -currentLeft * 100, animate);
+    const rightPage = getRightPageForLeft(currentLeft);
+    setTrackPosition(rightTrack, -rightPage * 100, animate);
+    updateActiveCard();
+    updateDots();
+  }
+
+  // --- Drag / touch handling ---
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragDeltaX = 0;
+  let trackWidth = 0;
+
+  function getPointer(e) {
+    return e.touches ? e.touches[0] : e;
+  }
+
+  function onDragStart(e) {
+    const pt = getPointer(e);
+    isDragging = true;
+    dragStartX = pt.clientX;
+    dragDeltaX = 0;
+    trackWidth = leftSide.offsetWidth;
+    // Remove transition for real-time tracking
+    leftTrack.style.transition = 'none';
+    rightTrack.style.transition = 'none';
+    slider.classList.add('tabs-channel-dragging');
+  }
+
+  function onDragMove(e) {
+    if (!isDragging) return;
+    const pt = getPointer(e);
+    dragDeltaX = pt.clientX - dragStartX;
+
+    // Prevent vertical scroll when dragging horizontally
+    if (Math.abs(dragDeltaX) > 10 && e.cancelable) {
+      e.preventDefault();
     }
+
+    // Real-time left track follows the drag
+    const dragPct = trackWidth > 0 ? (dragDeltaX / trackWidth) * 100 : 0;
+    const leftPct = -currentLeft * 100 + dragPct;
+    leftTrack.style.transform = `translateX(${leftPct}%)`;
+
+    // Proportionally move right track in real-time
+    const draggedLeftIndex = currentLeft - (dragDeltaX / trackWidth);
+    const rightPage = getRightPageForLeft(
+      Math.max(0, Math.min(draggedLeftIndex, leftCards.length - 1)),
+    );
+    const rightFraction = rightPage - Math.floor(rightPage);
+    const rightPct = -(Math.floor(rightPage) + rightFraction) * 100;
+    rightTrack.style.transform = `translateX(${rightPct}%)`;
+  }
+
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    slider.classList.remove('tabs-channel-dragging');
+
+    // Determine which slide to snap to
+    const dragFraction = trackWidth > 0 ? dragDeltaX / trackWidth : 0;
+    let target = currentLeft;
+    if (dragFraction < -SNAP_THRESHOLD && currentLeft < leftCards.length - 1) {
+      target = currentLeft + 1;
+    } else if (dragFraction > SNAP_THRESHOLD && currentLeft > 0) {
+      target = currentLeft - 1;
+    }
+    snapTo(target, true);
+  }
+
+  // Touch events
+  slider.addEventListener('touchstart', onDragStart, { passive: true });
+  slider.addEventListener('touchmove', onDragMove, { passive: false });
+  slider.addEventListener('touchend', onDragEnd);
+
+  // Mouse events
+  slider.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    onDragStart(e);
+  });
+  slider.addEventListener('mousemove', onDragMove);
+  slider.addEventListener('mouseup', onDragEnd);
+  slider.addEventListener('mouseleave', () => {
+    if (isDragging) onDragEnd();
   });
 
-  nextBtn.addEventListener('click', () => {
-    if (currentLeft < leftCards.length - 1) {
-      currentLeft += 1;
-      updateSlider();
-    }
-  });
+  // Build dot buttons
+  for (let i = 0; i < totalDots; i += 1) {
+    const dot = document.createElement('button');
+    dot.className = 'tabs-channel-dot';
+    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    dot.addEventListener('click', () => {
+      const targetIndex = Math.round((i / (totalDots - 1)) * (leftCards.length - 1));
+      snapTo(targetIndex, true);
+    });
+    dotEls.push(dot);
+    dots.append(dot);
+  }
 
-  nav.append(prevBtn);
-  nav.append(nextBtn);
-
-  // Collect CTA links (e.g. CHANNEL GUIDE)
+  // Collect CTA links
   const linkParagraphs = [...contentDiv.querySelectorAll('p')].filter(
     (p) => p.querySelector('a') && !p.querySelector('picture'),
   );
   linkParagraphs.forEach((p) => p.classList.add('tabs-channel-cta'));
 
   contentDiv.append(slider);
-  contentDiv.append(nav);
+  contentDiv.append(dots);
   linkParagraphs.forEach((p) => contentDiv.append(p));
 
-  updateSlider();
+  // Initialize
+  snapTo(0, false);
 }
 
 export default async function decorate(block) {
-  // Extract headings from first panel and place above tablist
   const firstPanel = block.children[0]?.children[1];
   const headings = firstPanel ? [...firstPanel.querySelectorAll('h2')] : [];
   const headingWrapper = document.createElement('div');
   headingWrapper.className = 'tabs-channel-heading';
   headings.forEach((h) => headingWrapper.append(h));
 
-  // Build tablist
   const tablist = document.createElement('div');
   tablist.className = 'tabs-channel-list';
   tablist.setAttribute('role', 'tablist');
 
-  // Decorate tabs and tabpanels
   const tabs = [...block.children].map((child) => child.firstElementChild);
   tabs.forEach((tab, i) => {
     const id = toClassName(tab.textContent);
 
-    // Decorate tabpanel
     const tabpanel = block.children[i];
     tabpanel.className = 'tabs-channel-panel';
     tabpanel.id = `tabpanel-${id}`;
@@ -191,7 +274,6 @@ export default async function decorate(block) {
     tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
     tabpanel.setAttribute('role', 'tabpanel');
 
-    // Build tab button
     const button = document.createElement('button');
     button.className = 'tabs-channel-tab';
     button.id = `tab-${id}`;
@@ -204,8 +286,8 @@ export default async function decorate(block) {
     button.setAttribute('role', 'tab');
     button.setAttribute('type', 'button');
     button.addEventListener('click', () => {
-      block.querySelectorAll('[role=tabpanel]').forEach((panel) => {
-        panel.setAttribute('aria-hidden', true);
+      block.querySelectorAll('[role=tabpanel]').forEach((p) => {
+        p.setAttribute('aria-hidden', true);
       });
       tablist.querySelectorAll('button').forEach((btn) => {
         btn.setAttribute('aria-selected', false);
@@ -217,7 +299,6 @@ export default async function decorate(block) {
     tab.remove();
     moveInstrumentation(button.querySelector('p'), null);
 
-    // Process panel content into left/right split slider
     processPanel(tabpanel);
   });
 

@@ -77,10 +77,27 @@ function createSlide(row, slideIndex, carouselId) {
   slide.setAttribute('id', `carousel-promo-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-promo-slide');
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-promo-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    slide.append(column);
-  });
+  const columns = [...row.querySelectorAll(':scope > div')];
+  const imageColumn = columns[0];
+  const contentColumn = columns[1];
+  const link = contentColumn?.querySelector('a');
+
+  imageColumn.classList.add('carousel-promo-slide-image');
+
+  if (link) {
+    const slideLink = document.createElement('a');
+    slideLink.href = link.href;
+    slideLink.className = 'carousel-promo-slide-link';
+    slideLink.setAttribute('aria-label', link.textContent?.trim() || 'Learn More');
+    slideLink.append(imageColumn);
+    slide.append(slideLink);
+  } else {
+    slide.append(imageColumn);
+    if (contentColumn) {
+      contentColumn.classList.add('carousel-promo-slide-content');
+      slide.append(contentColumn);
+    }
+  }
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
   if (labeledBy) {

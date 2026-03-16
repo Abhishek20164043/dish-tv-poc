@@ -4,8 +4,10 @@
   align-items: center;
   gap: 24px;
   padding: 40px 20px;
-  background-color: #1a1a1a;
-  color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 .columns-app-img-col {
@@ -29,7 +31,7 @@
 }
 
 .columns-app-content h2 {
-  color: #fff;
+  color: var(--text-color);
   margin: 0 0 24px;
   font-size: 28px;
   font-weight: 700;
@@ -40,13 +42,13 @@
   display: flex;
   gap: 0;
   margin-bottom: 16px;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid #ddd;
 }
 
 .columns-app-tab {
   background: none;
   border: none;
-  color: #999;
+  color: #666;
   font-size: 14px;
   font-weight: 700;
   padding: 12px 24px;
@@ -88,7 +90,7 @@
 
 .columns-app-feature {
   padding: 14px 20px;
-  color: #999;
+  color: #666;
   font-size: 15px;
   cursor: pointer;
   border-left: 3px solid transparent;
@@ -96,18 +98,18 @@
 }
 
 .columns-app-feature:hover {
-  color: #ccc;
-  background: rgba(255 255 255 / 5%);
+  color: #333;
+  background: rgba(0 0 0 / 5%);
 }
 
 .columns-app-feature.active {
-  color: #fff;
+  color: var(--text-color);
   border-left-color: #ff5722;
   background: rgba(255 87 34 / 10%);
   font-weight: 600;
 }
 
-@media (min-width: 900px) {
+@media (width >= 768px) {
   .columns-app {
     flex-direction: row;
     padding: 60px 40px;
