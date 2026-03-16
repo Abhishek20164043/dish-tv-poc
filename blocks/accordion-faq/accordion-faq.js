@@ -9,7 +9,14 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 const INITIAL_VISIBLE = 4;
 
 export default function decorate(block) {
+  /* Prepend "Frequently Asked Questions" heading */
+  const heading = document.createElement('h2');
+  heading.className = 'accordion-faq-heading';
+  heading.textContent = 'Frequently Asked Questions';
+  block.prepend(heading);
+
   [...block.children].forEach((row) => {
+    if (row === heading) return;
     // decorate accordion item label
     const label = row.children[0];
     const summary = document.createElement('summary');

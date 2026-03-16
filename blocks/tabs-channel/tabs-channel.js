@@ -96,10 +96,17 @@ function processPanel(panel) {
 
   // --- Slider state ---
   let currentLeft = 0;
-  const dots = document.createElement('div');
-  dots.className = 'tabs-channel-dots';
-  const totalDots = Math.min(leftCards.length, 7);
-  const dotEls = [];
+
+  // Scrollbar: track + draggable thumb
+  const scrollbar = document.createElement('div');
+  scrollbar.className = 'tabs-channel-scrollbar';
+  const scrollbarTrack = document.createElement('div');
+  scrollbarTrack.className = 'tabs-channel-scrollbar-track';
+  const scrollbarThumb = document.createElement('div');
+  scrollbarThumb.className = 'tabs-channel-scrollbar-thumb';
+  scrollbarThumb.innerHTML = '&#x2039;&ensp;&#x203a;';
+  scrollbarTrack.append(scrollbarThumb);
+  scrollbar.append(scrollbarTrack);
 
   function setTrackPosition(track, pct, animate) {
     if (animate) {
@@ -110,14 +117,19 @@ function processPanel(panel) {
     track.style.transform = `translateX(${pct}%)`;
   }
 
-  function updateDots() {
-    const progress = leftCards.length > 1
-      ? currentLeft / (leftCards.length - 1)
-      : 0;
-    const activeDot = Math.round(progress * (totalDots - 1));
-    dotEls.forEach((d, i) => {
-      d.classList.toggle('tabs-channel-dot-active', i === activeDot);
-    });
+  function updateThumbPosition(animate) {
+    const maxSlide = leftCards.length - 1;
+    if (maxSlide <= 0) return;
+    const trackW = scrollbarTrack.offsetWidth;
+    const thumbW = scrollbarThumb.offsetWidth;
+    const maxOffset = trackW - thumbW;
+    const offset = (currentLeft / maxSlide) * maxOffset;
+    if (animate) {
+      scrollbarThumb.style.transition = `left ${TRANSITION_SPEED}ms ease`;
+    } else {
+      scrollbarThumb.style.transition = 'none';
+    }
+    scrollbarThumb.style.left = `${offset}px`;
   }
 
   function updateActiveCard() {
@@ -143,10 +155,10 @@ function processPanel(panel) {
     const rightPage = getRightPageForLeft(currentLeft);
     setTrackPosition(rightTrack, -rightPage * 100, animate);
     updateActiveCard();
-    updateDots();
+    updateThumbPosition(animate);
   }
 
-  // --- Drag / touch handling ---
+  // --- Drag / touch handling on slider cards ---
   let isDragging = false;
   let dragStartX = 0;
   let dragDeltaX = 0;
@@ -162,9 +174,9 @@ function processPanel(panel) {
     dragStartX = pt.clientX;
     dragDeltaX = 0;
     trackWidth = leftSide.offsetWidth;
-    // Remove transition for real-time tracking
     leftTrack.style.transition = 'none';
     rightTrack.style.transition = 'none';
+    scrollbarThumb.style.transition = 'none';
     slider.classList.add('tabs-channel-dragging');
   }
 
@@ -173,17 +185,14 @@ function processPanel(panel) {
     const pt = getPointer(e);
     dragDeltaX = pt.clientX - dragStartX;
 
-    // Prevent vertical scroll when dragging horizontally
     if (Math.abs(dragDeltaX) > 10 && e.cancelable) {
       e.preventDefault();
     }
 
-    // Real-time left track follows the drag
     const dragPct = trackWidth > 0 ? (dragDeltaX / trackWidth) * 100 : 0;
     const leftPct = -currentLeft * 100 + dragPct;
     leftTrack.style.transform = `translateX(${leftPct}%)`;
 
-    // Proportionally move right track in real-time
     const draggedLeftIndex = currentLeft - (dragDeltaX / trackWidth);
     const rightPage = getRightPageForLeft(
       Math.max(0, Math.min(draggedLeftIndex, leftCards.length - 1)),
@@ -191,6 +200,16 @@ function processPanel(panel) {
     const rightFraction = rightPage - Math.floor(rightPage);
     const rightPct = -(Math.floor(rightPage) + rightFraction) * 100;
     rightTrack.style.transform = `translateX(${rightPct}%)`;
+
+    // Move scrollbar thumb proportionally during card drag
+    const maxSlide = leftCards.length - 1;
+    if (maxSlide > 0) {
+      const clampedIdx = Math.max(0, Math.min(draggedLeftIndex, maxSlide));
+      const sTrackW = scrollbarTrack.offsetWidth;
+      const sThumbW = scrollbarThumb.offsetWidth;
+      const maxOff = sTrackW - sThumbW;
+      scrollbarThumb.style.left = `${(clampedIdx / maxSlide) * maxOff}px`;
+    }
   }
 
   function onDragEnd() {
@@ -198,7 +217,6 @@ function processPanel(panel) {
     isDragging = false;
     slider.classList.remove('tabs-channel-dragging');
 
-    // Determine which slide to snap to
     const dragFraction = trackWidth > 0 ? dragDeltaX / trackWidth : 0;
     let target = currentLeft;
     if (dragFraction < -SNAP_THRESHOLD && currentLeft < leftCards.length - 1) {
@@ -209,12 +227,12 @@ function processPanel(panel) {
     snapTo(target, true);
   }
 
-  // Touch events
+  // Touch events on slider
   slider.addEventListener('touchstart', onDragStart, { passive: true });
   slider.addEventListener('touchmove', onDragMove, { passive: false });
   slider.addEventListener('touchend', onDragEnd);
 
-  // Mouse events
+  // Mouse events on slider
   slider.addEventListener('mousedown', (e) => {
     e.preventDefault();
     onDragStart(e);
@@ -225,18 +243,69 @@ function processPanel(panel) {
     if (isDragging) onDragEnd();
   });
 
-  // Build dot buttons
-  for (let i = 0; i < totalDots; i += 1) {
-    const dot = document.createElement('button');
-    dot.className = 'tabs-channel-dot';
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.addEventListener('click', () => {
-      const targetIndex = Math.round((i / (totalDots - 1)) * (leftCards.length - 1));
-      snapTo(targetIndex, true);
-    });
-    dotEls.push(dot);
-    dots.append(dot);
+  // --- Drag handling on scrollbar thumb ---
+  let isThumbDrag = false;
+  let thumbStartX = 0;
+  let thumbStartLeft = 0;
+
+  function onThumbDragStart(e) {
+    e.stopPropagation();
+    const pt = getPointer(e);
+    isThumbDrag = true;
+    thumbStartX = pt.clientX;
+    thumbStartLeft = parseFloat(scrollbarThumb.style.left) || 0;
+    scrollbarThumb.style.transition = 'none';
+    leftTrack.style.transition = 'none';
+    rightTrack.style.transition = 'none';
   }
+
+  function onThumbDragMove(e) {
+    if (!isThumbDrag) return;
+    if (e.cancelable) e.preventDefault();
+    const pt = getPointer(e);
+    const dx = pt.clientX - thumbStartX;
+    const sTrackW = scrollbarTrack.offsetWidth;
+    const sThumbW = scrollbarThumb.offsetWidth;
+    const maxOff = sTrackW - sThumbW;
+    const newLeft = Math.max(0, Math.min(thumbStartLeft + dx, maxOff));
+    scrollbarThumb.style.left = `${newLeft}px`;
+
+    // Move content proportionally
+    const maxSlide = leftCards.length - 1;
+    if (maxSlide > 0 && maxOff > 0) {
+      const progress = newLeft / maxOff;
+      const floatIndex = progress * maxSlide;
+      leftTrack.style.transform = `translateX(${-floatIndex * 100}%)`;
+      const rp = getRightPageForLeft(floatIndex);
+      rightTrack.style.transform = `translateX(${-rp * 100}%)`;
+    }
+  }
+
+  function onThumbDragEnd() {
+    if (!isThumbDrag) return;
+    isThumbDrag = false;
+    // Snap to nearest slide
+    const sTrackW = scrollbarTrack.offsetWidth;
+    const sThumbW = scrollbarThumb.offsetWidth;
+    const maxOff = sTrackW - sThumbW;
+    const curLeft = parseFloat(scrollbarThumb.style.left) || 0;
+    const maxSlide = leftCards.length - 1;
+    const nearest = maxOff > 0
+      ? Math.round((curLeft / maxOff) * maxSlide)
+      : 0;
+    snapTo(nearest, true);
+  }
+
+  scrollbarThumb.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    onThumbDragStart(e);
+  });
+  document.addEventListener('mousemove', onThumbDragMove);
+  document.addEventListener('mouseup', onThumbDragEnd);
+
+  scrollbarThumb.addEventListener('touchstart', onThumbDragStart, { passive: false });
+  document.addEventListener('touchmove', onThumbDragMove, { passive: false });
+  document.addEventListener('touchend', onThumbDragEnd);
 
   // Collect CTA links (returned to caller for block-level placement)
   const linkParagraphs = [...contentDiv.querySelectorAll('p')].filter(
@@ -245,7 +314,7 @@ function processPanel(panel) {
   linkParagraphs.forEach((p) => p.classList.add('tabs-channel-cta'));
 
   contentDiv.append(slider);
-  contentDiv.append(dots);
+  contentDiv.append(scrollbar);
 
   // Initialize
   snapTo(0, false);
