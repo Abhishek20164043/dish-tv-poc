@@ -148,5 +148,20 @@ export default async function decorate(block) {
 
   if (!isSingleSlide) {
     bindEvents(block);
+
+    // Auto-play: advance slides every 4 seconds
+    let autoPlayInterval = setInterval(() => {
+      showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
+    }, 4000);
+
+    // Pause on hover, resume on leave
+    block.addEventListener('mouseenter', () => {
+      clearInterval(autoPlayInterval);
+    });
+    block.addEventListener('mouseleave', () => {
+      autoPlayInterval = setInterval(() => {
+        showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
+      }, 4000);
+    });
   }
 }

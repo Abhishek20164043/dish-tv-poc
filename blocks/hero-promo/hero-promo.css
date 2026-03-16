@@ -5,8 +5,13 @@
 
 .hero-promo {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 0;
+  min-height: unset;
+}
+
+.hero-promo-link {
+  display: block;
+  line-height: 0;
 }
 
 .hero-promo h1,
@@ -38,6 +43,18 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+.hero-promo .hero-promo-link picture {
+  position: static;
+  z-index: auto;
+  inset: auto;
+}
+
+.hero-promo .hero-promo-link img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media (width >= 900px) {

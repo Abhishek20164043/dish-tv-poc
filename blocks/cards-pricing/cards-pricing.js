@@ -207,12 +207,23 @@ export default function decorate(block) {
         infoDiv.appendChild(price);
       }
 
+      // Description: check for <em> first, then fallback to next <p> after price
       const em = textCol.querySelector('p > em');
       if (em) {
         const desc = document.createElement('div');
         desc.className = 'cards-pricing-desc';
         desc.textContent = em.textContent;
         infoDiv.appendChild(desc);
+      } else if (strong) {
+        const priceP = strong.closest('p');
+        const nextP = priceP?.nextElementSibling;
+        if (nextP && nextP.tagName === 'P' && !nextP.querySelector('strong') && !nextP.querySelector('img') && !nextP.querySelector('a') && nextP.textContent.trim()) {
+          const desc = document.createElement('div');
+          desc.className = 'cards-pricing-desc';
+          desc.textContent = nextP.textContent.trim();
+          infoDiv.appendChild(desc);
+          nextP.dataset.used = 'true';
+        }
       }
 
       header.appendChild(infoDiv);
@@ -261,7 +272,12 @@ export default function decorate(block) {
       // Use :scope > p to only match direct <p> children of textCol,
       // not <p> elements nested inside <ul><li> (DA wraps images in <p><picture>)
       const allP = textCol.querySelectorAll(':scope > p');
+      let badgeSectionCreated = false;
+
       allP.forEach((p) => {
+        // Skip already-used paragraphs (e.g. description)
+        if (p.dataset.used) return;
+
         if (p.querySelector('img') && !p.querySelector('a')) {
           const badgeSection = document.createElement('div');
           badgeSection.className = 'cards-pricing-badges';
@@ -283,8 +299,39 @@ export default function decorate(block) {
           });
 
           li.appendChild(badgeSection);
+          badgeSectionCreated = true;
         }
       });
+
+      // Fallback: plain text badges (e.g. "Prime Lite", "5X Picture quality")
+      if (!badgeSectionCreated) {
+        const featureList = textCol.querySelector('ul');
+        if (featureList) {
+          const badgeTexts = [];
+          let sibling = featureList.nextElementSibling;
+          while (sibling) {
+            if (sibling.tagName === 'P' && !sibling.querySelector('strong') && !sibling.querySelector('a')
+              && !sibling.querySelector('img') && !sibling.dataset.used && sibling.textContent.trim()) {
+              badgeTexts.push(sibling.textContent.trim());
+            }
+            sibling = sibling.nextElementSibling;
+          }
+
+          if (badgeTexts.length > 0) {
+            const badgeSection = document.createElement('div');
+            badgeSection.className = 'cards-pricing-badges';
+            badgeTexts.forEach((text) => {
+              const badge = document.createElement('div');
+              badge.className = 'cards-pricing-badge';
+              const badgeLabel = document.createElement('span');
+              badgeLabel.textContent = text;
+              badge.appendChild(badgeLabel);
+              badgeSection.appendChild(badge);
+            });
+            li.appendChild(badgeSection);
+          }
+        }
+      }
 
       // --- Antenna toggle + Select button ---
       const bottomSection = document.createElement('div');

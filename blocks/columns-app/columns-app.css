@@ -1,33 +1,119 @@
-.columns-app > div {
+.columns-app {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 20px;
+  background-color: #1a1a1a;
+  color: #fff;
 }
 
-.columns-app img {
-  width: 100%;
+.columns-app-img-col {
+  max-width: 280px;
+  flex-shrink: 0;
 }
 
-.columns-app > div > div {
-  order: 1;
-}
-
-.columns-app > div > .columns-app-img-col {
-  order: 0;
-}
-
-.columns-app > div > .columns-app-img-col img {
+.columns-app-img-col picture {
   display: block;
+  line-height: 0;
 }
 
-@media (width >= 900px) {
-  .columns-app > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+.columns-app-img-col img {
+  width: 100%;
+  height: auto;
+}
+
+.columns-app-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.columns-app-content h2 {
+  color: #fff;
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Tab bar */
+.columns-app-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #333;
+}
+
+.columns-app-tab {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 24px;
+  cursor: pointer;
+  position: relative;
+  font-family: var(--body-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.columns-app-tab.active {
+  color: #ff5722;
+}
+
+.columns-app-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ff5722;
+}
+
+.columns-app-tab:hover {
+  color: #ff7043;
+}
+
+/* Panels */
+.columns-app-panel[aria-hidden="true"] {
+  display: none;
+}
+
+.columns-app-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.columns-app-feature {
+  padding: 14px 20px;
+  color: #999;
+  font-size: 15px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.columns-app-feature:hover {
+  color: #ccc;
+  background: rgba(255 255 255 / 5%);
+}
+
+.columns-app-feature.active {
+  color: #fff;
+  border-left-color: #ff5722;
+  background: rgba(255 87 34 / 10%);
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .columns-app {
+    flex-direction: row;
+    padding: 60px 40px;
   }
 
-  .columns-app > div > div {
-    flex: 1;
-    order: unset;
+  .columns-app-img-col {
+    max-width: 360px;
   }
 }
