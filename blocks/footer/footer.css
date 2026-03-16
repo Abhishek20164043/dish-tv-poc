@@ -3,7 +3,7 @@ footer {
   background-color: #202020;
   color: #e4e4e4;
   font-size: var(--body-font-size-s);
-  padding: 25px 0 50px;
+  padding: 20px 0 30px;
 }
 
 footer .footer > div {
@@ -35,7 +35,7 @@ footer a.button:hover {
 /* Section 1: "Can we help you with something?" */
 footer .footer .section:first-child {
   background-color: #fff;
-  padding: 53px 48px;
+  padding: 35px 48px;
   text-align: center;
   border-radius: 6px;
   margin: 24px 24px 0;
@@ -101,7 +101,7 @@ footer .footer .section:first-child > div > p a.button:any-link {
 
 /* Section 2: Footer link grid (PRODUCTS, PACKS & CHANNELS, etc.) */
 footer .footer .section:nth-child(2) {
-  padding: 32px 0;
+  padding: 20px 0;
   border-bottom: 1px solid #333;
 }
 
@@ -166,7 +166,7 @@ footer .footer .section:nth-child(2) ul {
 
 footer .footer .section:nth-child(2) li {
   margin: 0;
-  padding: 6px 0;
+  padding: 4px 0;
 }
 
 footer .footer .section:nth-child(2) > div li a:any-link {
@@ -181,7 +181,7 @@ footer .footer .section:nth-child(2) > div li a:hover {
 
 /* Section 3: LOCATE A DEALER + FOLLOW US */
 footer .footer .section:nth-child(3) {
-  padding: 30px 0;
+  padding: 20px 0;
   border-bottom: 1px solid #333;
 }
 
@@ -237,18 +237,7 @@ footer .dealer-pincode-form button:hover {
   color: #ccc;
 }
 
-/* Dealer link fallback */
-footer .footer .section:nth-child(3) > div > p a:any-link {
-  color: #999;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-footer .footer .section:nth-child(3) > div > p a:hover {
-  color: #f04c23;
-}
-
-/* Social icons */
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer .section:nth-child(3) > div > p a {
   display: inline-flex;
   width: 50px;
@@ -261,7 +250,15 @@ footer .footer .section:nth-child(3) > div > p a {
   transition: background-color 0.2s;
 }
 
+/* Dealer link fallback */
+footer .footer .section:nth-child(3) > div > p a:any-link {
+  color: #999;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 footer .footer .section:nth-child(3) > div > p a:hover {
+  color: #f04c23;
   background-color: #555;
 }
 
@@ -293,11 +290,12 @@ footer .footer .section:nth-child(4) > div {
 }
 
 /* Footer logo - move to top */
-footer div.footer .section:nth-child(4) > div > p:nth-child(2) {
+footer .footer .section:nth-child(4) > div > p:nth-child(2) {
   order: -2;
 }
 
-footer div.footer .section:nth-child(4) > div > p:nth-child(n) img {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer .section:nth-child(4) > div > p:nth-child(n) img {
   max-width: 120px;
   height: auto;
   margin: 0 0 8px;
@@ -410,14 +408,13 @@ footer .footer .section:nth-child(4) > div > p:first-child a:hover {
   }
 
   footer .footer .section:nth-child(4) > div {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     border-top: none;
   }
 
   /* Logo and copyright on same row */
-  footer div.footer .section:nth-child(4) > div > p:nth-child(2) {
+  footer .footer .section:nth-child(4) > div > p:nth-child(2) {
     order: -2;
     margin-right: 16px;
   }

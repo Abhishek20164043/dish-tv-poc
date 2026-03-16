@@ -361,6 +361,15 @@ main > .section > .hero-promo-wrapper {
   padding: 0;
 }
 
+/* Hero carousel (first carousel): match original ~620px height at 1440px viewport */
+main > .section > .carousel-promo-wrapper:first-child .carousel-promo-slide {
+  min-height: min(43vw, 620px);
+}
+
+main > .section > .carousel-promo-wrapper:first-child .carousel-promo-slide-link {
+  min-height: min(43vw, 620px);
+}
+
 /* Fix for single-section pages where all blocks share one section:
    Reset section-level backgrounds and move them to individual wrappers */
 main > .section.carousel-promo-container.accordion-faq-container {
@@ -373,12 +382,13 @@ main > .section.carousel-promo-container.accordion-faq-container {
 main > .section > .cards-pack-wrapper {
   max-width: unset;
   padding: 0;
+  background-color: rgb(26 26 26);
 }
 
 /* Columns-app wrapper: full-width grey bg with background image matching original */
 main > .section > .columns-app-wrapper {
   max-width: unset;
-  padding: 40px 0;
+  padding: 0;
   background-color: rgb(245 245 245);
   background-image: url('https://www.dishtv.in/content/dam/dishtv-aem-web-platform/homepage/Manage%20account%20container.png');
   background-size: cover;
@@ -416,10 +426,20 @@ main > .section.carousel-promo-container.accordion-faq-container > .accordion-fa
   color: #9e9e9e;
 }
 
-/* "Your Guide to Creating a Pack" heading: remove top margin after carousel */
-main > .section > .carousel-promo-wrapper + .default-content-wrapper h1 {
-  margin-top: 16px;
-  margin-bottom: 0;
+/* "Your Guide to Creating a Pack" heading: dark bg to match cards-pack section */
+/* stylelint-disable-next-line no-descending-specificity */
+main > .section > .carousel-promo-wrapper:first-child + .default-content-wrapper {
+  max-width: unset;
+  padding: 32px 24px 0;
+  background-color: rgb(26 26 26);
+  text-align: center;
+}
+
+main > .section > .carousel-promo-wrapper:first-child + .default-content-wrapper h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 /* Cards-pricing heading wrapper (before pricing block): grey bg full-width */

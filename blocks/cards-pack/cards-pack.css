@@ -1,6 +1,6 @@
 .cards-pack {
   background-color: #1a1a1a;
-  padding: 0 20px 40px;
+  padding: 24px 20px 40px;
 }
 
 .cards-pack-accordion {
@@ -12,7 +12,34 @@
 }
 
 .cards-pack-item {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #444;
+  position: relative;
+  overflow: hidden;
+  padding: 0 24px;
+}
+
+.cards-pack-item:last-child {
+  border-bottom: none;
+}
+
+/* Large backdrop/watermark number behind each accordion item */
+.cards-pack-item::before {
+  content: attr(data-num);
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 120px;
+  font-weight: 900;
+  color: rgb(255 255 255 / 7%);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cards-pack-item.active::before {
+  top: 20px;
+  transform: none;
 }
 
 .cards-pack-item-header {
@@ -26,6 +53,8 @@
   color: #fff;
   font-family: var(--body-font-family);
   gap: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .cards-pack-item-header:hover {
@@ -70,6 +99,8 @@
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.3s ease;
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .cards-pack-item.active .cards-pack-item-body {

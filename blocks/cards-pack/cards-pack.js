@@ -14,6 +14,7 @@ export default function decorate(block) {
     // Create accordion item
     const item = document.createElement('div');
     item.className = 'cards-pack-item';
+    item.dataset.num = num;
     moveInstrumentation(row, item);
     if (i === 0) item.classList.add('active');
 

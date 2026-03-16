@@ -112,7 +112,7 @@
 @media (width >= 768px) {
   .columns-app {
     flex-direction: row;
-    padding: 60px 40px;
+    padding: 35px 40px;
   }
 
   .columns-app-img-col {
