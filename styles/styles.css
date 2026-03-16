@@ -454,23 +454,19 @@ main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) {
 }
 
 /* stylelint-disable no-descending-specificity */
-main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) h2,
-main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) p,
-main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) ol {
+main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) h2 {
   margin-top: 0;
   margin-bottom: 0.5em;
+  color: var(--text-color);
 }
 
-main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) ol:last-child {
-  margin-bottom: 0;
+/* Hide subtitle and step list per original design */
+main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) p,
+main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) ol {
+  display: none;
 }
 
 /* stylelint-enable no-descending-specificity */
-
-/* stylelint-disable-next-line no-descending-specificity */
-main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) h2 {
-  color: var(--text-color);
-}
 
 /* Cards-pricing wrapper: grey bg at wrapper level */
 main > .section.carousel-promo-container.accordion-faq-container > .cards-pricing-wrapper {
