@@ -43,12 +43,12 @@ function buildShowCard(p) {
 
 function processPanel(panel) {
   const contentDiv = panel.querySelector(':scope > div');
-  if (!contentDiv) return;
+  if (!contentDiv) return [];
 
   const paragraphs = [...contentDiv.querySelectorAll('p')];
   const showParagraphs = paragraphs.filter((p) => p.querySelector('picture'));
 
-  if (showParagraphs.length === 0) return;
+  if (showParagraphs.length === 0) return [];
 
   const half = Math.ceil(showParagraphs.length / 2);
   const leftItems = showParagraphs.slice(0, half);
@@ -238,7 +238,7 @@ function processPanel(panel) {
     dots.append(dot);
   }
 
-  // Collect CTA links
+  // Collect CTA links (returned to caller for block-level placement)
   const linkParagraphs = [...contentDiv.querySelectorAll('p')].filter(
     (p) => p.querySelector('a') && !p.querySelector('picture'),
   );
@@ -246,10 +246,11 @@ function processPanel(panel) {
 
   contentDiv.append(slider);
   contentDiv.append(dots);
-  linkParagraphs.forEach((p) => contentDiv.append(p));
 
   // Initialize
   snapTo(0, false);
+
+  return linkParagraphs;
 }
 
 export default async function decorate(block) {
@@ -263,6 +264,7 @@ export default async function decorate(block) {
   tablist.className = 'tabs-channel-list';
   tablist.setAttribute('role', 'tablist');
 
+  const allCtas = [];
   const tabs = [...block.children].map((child) => child.firstElementChild);
   tabs.forEach((tab, i) => {
     const id = toClassName(tab.textContent);
@@ -299,11 +301,15 @@ export default async function decorate(block) {
     tab.remove();
     moveInstrumentation(button.querySelector('p'), null);
 
-    processPanel(tabpanel);
+    const ctas = processPanel(tabpanel);
+    if (ctas) allCtas.push(...ctas);
   });
 
   block.prepend(tablist);
   if (headingWrapper.children.length) {
     block.prepend(headingWrapper);
   }
+
+  // Append CTAs at block level so they're visible regardless of active tab
+  allCtas.forEach((cta) => block.append(cta));
 }

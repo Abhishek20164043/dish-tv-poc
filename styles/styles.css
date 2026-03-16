@@ -457,7 +457,9 @@ main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) {
 main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) h2 {
   margin-top: 0;
   margin-bottom: 0.5em;
-  color: var(--text-color);
+  color: #444;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 /* Hide subtitle and step list per original design */
@@ -478,13 +480,14 @@ main > .section.carousel-promo-container.accordion-faq-container > .cards-pricin
 
 /* CTA wrapper after cards-pricing: grey bg continues */
 /* stylelint-disable-next-line no-descending-specificity */
-main > .section > .cards-pricing-wrapper + .default-content-wrapper {
+main > .section.carousel-promo-container.accordion-faq-container > .cards-pricing-wrapper + .default-content-wrapper {
   max-width: unset;
   background-color: rgb(245 245 245);
   padding-top: 0;
   padding-bottom: 40px;
   text-align: center;
-  color: var(--text-color);
+  color: #444;
+  font-size: 16px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */

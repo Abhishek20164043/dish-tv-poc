@@ -1,0 +1,441 @@
+{
+  "url": "https://main--dish-tv-poc--abhishek20164043.aem.page/?nocache=1773685414378",
+  "capturedAt": "2026-03-16",
+  "page": {
+    "scrollHeight": 6934,
+    "scrollWidth": 1920,
+    "viewportWidth": 1920,
+    "viewportHeight": 1080,
+    "title": "Your Guide to Creating a Pack"
+  },
+  "screenshots": {
+    "fullPage": "/workspace/output/eds-fullpage.png",
+    "s1_hero": "/workspace/output/eds-s1-hero.png",
+    "s2_cardsPack": "/workspace/output/eds-s2-cardsPack.png",
+    "s3_columnsApp": "/workspace/output/eds-s3-columnsApp.png",
+    "s4_banners": "/workspace/output/eds-s4-banners.png",
+    "s5_tabsChannel": "/workspace/output/eds-s5-tabsChannel.png",
+    "s6_pricing": "/workspace/output/eds-s6-pricing.png",
+    "s7_faq": "/workspace/output/eds-s7-faq.png",
+    "s8_footer": "/workspace/output/eds-s8-footer.png"
+  },
+  "sections": {
+    "s1_heroCarousel": {
+      "name": "Hero Carousel",
+      "screenshotFile": "eds-s1-hero.png",
+      "scrollOffset": 0,
+      "blockClass": "carousel-promo",
+      "position": {
+        "top": 84,
+        "left": 0,
+        "width": 1920,
+        "height": 620
+      },
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(19, 19, 19)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "21.6px",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "notes": "4-slide carousel with auto-rotation. Slides include: Lifetime Free Service promo, VZY TV, New DTH Connection, Diwali/Recharge offer. Navigation arrows + dot indicators."
+    },
+    "s2_cardsPack": {
+      "name": "Your Guide to Creating a Pack",
+      "screenshotFile": "eds-s2-cardsPack.png",
+      "scrollOffset": 650,
+      "blockClass": "cards-pack",
+      "heading": {
+        "text": "Your Guide to Creating a Pack",
+        "tag": "h1",
+        "position": {
+          "top": 736,
+          "left": 24,
+          "width": 1872,
+          "height": 45
+        },
+        "styles": {
+          "fontSize": "36px",
+          "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+          "fontWeight": "700",
+          "lineHeight": "45px",
+          "color": "rgb(255, 255, 255)"
+        }
+      },
+      "position": {
+        "top": 781,
+        "left": 0,
+        "width": 1920,
+        "height": 761
+      },
+      "styles": {
+        "backgroundColor": "rgb(26, 26, 26)",
+        "color": "rgb(19, 19, 19)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "24px 20px 40px",
+        "margin": "0px"
+      },
+      "accordionItem": {
+        "selector": ".cards-pack-accordion",
+        "position": {
+          "top": 805,
+          "left": 360,
+          "width": 1200,
+          "height": 697
+        },
+        "styles": {
+          "backgroundColor": "rgb(51, 51, 51)",
+          "borderRadius": "0px 0px 6px 6px",
+          "boxShadow": "rgba(0, 0, 0, 0.08) 0px 4px 32px 0px",
+          "margin": "0px 340px"
+        }
+      },
+      "notes": "3-item accordion: 01 VALUE SAVER PACKS (expanded by default), 02 ADD/DELETE CHANNELS, 03 EXPLORE ALL PACKS. Each has description text, CTA link, and product card images."
+    },
+    "s3_columnsApp": {
+      "name": "Manage your account with ease",
+      "screenshotFile": "eds-s3-columnsApp.png",
+      "scrollOffset": 1460,
+      "blockClass": "columns-app",
+      "position": {
+        "top": 1542,
+        "left": 320,
+        "width": 1280,
+        "height": 664
+      },
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(19, 19, 19)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "35px 40px",
+        "margin": "0px 320px",
+        "display": "flex",
+        "gap": "24px"
+      },
+      "heading": {
+        "text": "Manage your account with ease",
+        "tag": "h2",
+        "position": {
+          "top": 1688,
+          "left": 744,
+          "width": 816,
+          "height": 35
+        },
+        "styles": {
+          "fontSize": "28px",
+          "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+          "fontWeight": "700",
+          "color": "rgb(19, 19, 19)"
+        }
+      },
+      "tablist": {
+        "selector": ".columns-app-tabs",
+        "tabs": ["MOBILE APP", "WEB"],
+        "position": {
+          "top": 1747,
+          "left": 744,
+          "width": 816,
+          "height": 68
+        }
+      },
+      "notes": "Two-column layout: left = mobile phone mockup image, right = heading + tabs (MOBILE APP / WEB) + feature list (5 items: Recharge, Activate channels, Manage packs, Find channels, Scan TV screen)."
+    },
+    "s4_banners": {
+      "name": "DishNXT + Watcho Banners",
+      "screenshotFile": "eds-s4-banners.png",
+      "scrollOffset": 2130,
+      "subSections": {
+        "dishNxtBanner": {
+          "blockClass": "hero-promo",
+          "wrapperClass": "hero-promo-wrapper",
+          "position": {
+            "top": 2207,
+            "left": 0,
+            "width": 1920,
+            "height": 827
+          },
+          "styles": {
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "padding": "0px",
+            "margin": "0px"
+          },
+          "linkHref": "https://main--dish-tv-poc--abhishek20164043.aem.page/products/dishtv-hd-set-top-box",
+          "notes": "Full-width banner image: 'See the world come alive. Pixel by pixel.' DishTV HD promo with mountain biker and VIEW DETAILS CTA."
+        },
+        "watchoCarousel": {
+          "blockClass": "carousel-promo (second instance)",
+          "position": {
+            "top": 3034,
+            "left": 0,
+            "width": 1920,
+            "height": 855
+          },
+          "styles": {
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "padding": "0px",
+            "margin": "0px"
+          },
+          "linkHref": "https://main--dish-tv-poc--abhishek20164043.aem.page/packs-channel/all-in-one",
+          "notes": "Watcho banner carousel - single slide with DishTV Watcho branding."
+        }
+      },
+      "combinedRange": {
+        "top": 2207,
+        "bottom": 3889,
+        "totalHeight": 1682
+      }
+    },
+    "s5_tabsChannel": {
+      "name": "Snack on the content you love",
+      "screenshotFile": "eds-s5-tabsChannel.png",
+      "scrollOffset": 3820,
+      "blockClass": "tabs-channel",
+      "position": {
+        "top": 3889,
+        "left": 0,
+        "width": 1920,
+        "height": 945
+      },
+      "styles": {
+        "backgroundColor": "rgb(26, 26, 26)",
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "60px 40px",
+        "margin": "0px"
+      },
+      "headings": [
+        {
+          "text": "Snack on the content you love.",
+          "position": { "top": 3949, "width": 1840, "height": 47 },
+          "styles": {
+            "fontSize": "36px",
+            "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+            "fontWeight": "700",
+            "color": "rgb(255, 255, 255)"
+          }
+        },
+        {
+          "text": "All day, every day.",
+          "position": { "top": 3996, "width": 1840, "height": 47 },
+          "styles": {
+            "fontSize": "36px",
+            "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+            "fontWeight": "700",
+            "color": "rgb(255, 255, 255)"
+          }
+        }
+      ],
+      "tablist": {
+        "selector": ".tabs-channel-list",
+        "tabs": ["LIVE TV", "ACTIVE SERVICES"],
+        "position": {
+          "top": 4074,
+          "left": 40,
+          "width": 1840,
+          "height": 44
+        }
+      },
+      "notes": "Dark background section with two tabs. LIVE TV tab shows a grid of TV show cards (14 shows visible in left panel + 14 in right panel) with show images, names, and durations. 7 slide dots for pagination. Shows include: Apollena, Discovery Shows, Yeh Rishta Kya Kehlata Hai, Jay Jagannath, etc."
+    },
+    "s6_cardsPricing": {
+      "name": "Dish HD Entertainment Starts Here",
+      "screenshotFile": "eds-s6-pricing.png",
+      "scrollOffset": 4800,
+      "blockClass": "cards-pricing",
+      "heading": {
+        "text": "Dish HD Entertainment Starts Here",
+        "tag": "h2",
+        "position": {
+          "top": 4874,
+          "left": 32,
+          "width": 1856,
+          "height": 45
+        },
+        "styles": {
+          "fontSize": "36px",
+          "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+          "fontWeight": "600",
+          "color": "rgb(19, 19, 19)",
+          "margin": "0px 0px 18px"
+        }
+      },
+      "position": {
+        "top": 4937,
+        "left": 32,
+        "width": 1856,
+        "height": 596
+      },
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(19, 19, 19)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "pricingCard": {
+        "selector": ".cards-pricing-featured",
+        "position": {
+          "top": 4937,
+          "left": 32,
+          "width": 608,
+          "height": 588
+        },
+        "styles": {
+          "backgroundColor": "rgb(255, 255, 255)",
+          "borderRadius": "8px",
+          "border": "2px solid rgb(238, 72, 35)",
+          "boxShadow": "rgba(150, 146, 146, 0.2) 0px 1px 15px 1px"
+        }
+      },
+      "cards": [
+        { "name": "Dish HD - HD Plan With Pack", "price": "1355*", "subtitle": "With Three Months Pack" },
+        { "name": "Dish HD - HD Cashback Plan", "price": "1694*", "subtitle": "Get Rs. 3,600 Total Cashback" },
+        { "name": "Dish HD - HD Plan With Pack", "price": "931*", "subtitle": "With One Month Pack" }
+      ],
+      "notes": "3 pricing cards in a horizontal row. Each card has: plan badge, set-top-box image, price, subtitle, KEY FEATURES (3 items with icons), feature icons row (Prime Lite, 5X Picture quality, 5.1 surround sound, Service Warranty), Antenna Yes/No radio, SELECT button."
+    },
+    "s7_faq": {
+      "name": "Unsure Section + FAQ Accordion",
+      "screenshotFile": "eds-s7-faq.png",
+      "scrollOffset": 5550,
+      "subSections": {
+        "unsureOffer": {
+          "selector": ".default-content-wrapper",
+          "position": {
+            "top": 5532,
+            "left": 0,
+            "width": 1920,
+            "height": 92
+          },
+          "styles": {
+            "backgroundColor": "rgb(45, 45, 45)",
+            "padding": "40px 24px 0px"
+          },
+          "content": "Unsure which offer to choose? Give a missed call at 1800-274-9109"
+        },
+        "faqAccordion": {
+          "blockClass": "accordion-faq",
+          "wrapperClass": "accordion-faq-wrapper",
+          "wrapperPosition": {
+            "top": 5633,
+            "left": 0,
+            "width": 1920,
+            "height": 391
+          },
+          "wrapperStyles": {
+            "backgroundColor": "rgb(45, 45, 45)",
+            "color": "rgb(158, 158, 158)",
+            "padding": "60px 24px"
+          },
+          "blockPosition": {
+            "top": 5693,
+            "left": 24,
+            "width": 1872,
+            "height": 271
+          },
+          "faqItems": [
+            "What is DishTV?",
+            "Why choose DishTV?",
+            "How DishTV works?",
+            "Who should set DishTV?"
+          ],
+          "loadMoreButton": {
+            "text": "LOAD MORE FAQs",
+            "position": {
+              "top": 5923,
+              "left": 865,
+              "width": 190,
+              "height": 42
+            },
+            "styles": {
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "color": "rgb(240, 76, 35)",
+              "fontSize": "14px",
+              "fontWeight": "600",
+              "borderRadius": "4px",
+              "border": "2px solid rgb(240, 76, 35)",
+              "padding": "10px 32px"
+            }
+          }
+        }
+      }
+    },
+    "s8_footer": {
+      "name": "Footer",
+      "screenshotFile": "eds-s8-footer.png",
+      "scrollOffset": 5854,
+      "position": {
+        "top": 6024,
+        "left": 0,
+        "width": 1920,
+        "height": 909
+      },
+      "styles": {
+        "backgroundColor": "rgb(32, 32, 32)",
+        "color": "rgb(228, 228, 228)",
+        "fontSize": "16px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "fontWeight": "400",
+        "lineHeight": "19.2px",
+        "padding": "20px 0px 30px"
+      },
+      "subSections": {
+        "helpSection": {
+          "heading": "Can we help you with something?",
+          "links": ["Add/Delete Channel", "Recharge & Offers", "My Account", "Raise a complaint", "Refresh your account"],
+          "ctaButton": "GET HELP"
+        },
+        "footerColumns": {
+          "columns": ["PRODUCTS", "PACKS & CHANNELS", "GET HELP", "SERVICES", "COMPANY"],
+          "display": "grid",
+          "gap": "0px 32px"
+        },
+        "locateDealer": {
+          "heading": "LOCATE A DEALER",
+          "input": "Enter Pincode"
+        },
+        "socialMedia": {
+          "heading": "FOLLOW US",
+          "platforms": ["Facebook", "YouTube", "X", "Instagram"]
+        },
+        "bottomBar": {
+          "links": ["Sitemap", "Terms & Conditions", "Privacy Policy", "Regulatory", "Trade Partners", "Offer Terms & Conditions"],
+          "copyright": "Copyright 2026. All Rights Reserved",
+          "logo": "DishTV"
+        }
+      }
+    }
+  },
+  "globalStyles": {
+    "primaryFont": "roboto, roboto-fallback, sans-serif",
+    "headingFont": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+    "primaryTextColor": "rgb(19, 19, 19)",
+    "whiteTextColor": "rgb(255, 255, 255)",
+    "accentColor": "rgb(240, 76, 35)",
+    "darkBackground": "rgb(26, 26, 26)",
+    "darkerBackground": "rgb(45, 45, 45)",
+    "footerBackground": "rgb(32, 32, 32)",
+    "cardBackground": "rgb(51, 51, 51)",
+    "linkColor": "rgb(59, 99, 251)",
+    "faqTextColor": "rgb(158, 158, 158)",
+    "footerTextColor": "rgb(228, 228, 228)"
+  },
+  "header": {
+    "position": {
+      "top": 0,
+      "left": 0,
+      "width": 1920,
+      "height": 84
+    },
+    "navItems": ["PRODUCTS", "MODIFY MY PACK", "GET HELP", "SERVICES", "GET A CONNECTION"],
+    "ctaButtons": ["INSTANT RECHARGE", "LOGIN"],
+    "logo": "DishTV"
+  }
+}

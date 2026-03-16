@@ -157,7 +157,7 @@
 
 .tabs-channel-left .tabs-channel-card-title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   color: #fff;
   margin-bottom: 4px;
 }
@@ -280,23 +280,23 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #fff;
-  background: #f04c23;
+  color: #f04c23;
+  background: transparent;
   border: none;
-  border-radius: 6px;
-  padding: 10px 24px;
+  border-radius: 0;
+  padding: 0;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: background 0.2s;
+  transition: color 0.2s;
 }
 
 .tabs-channel-cta a:hover,
 .tabs-channel .button-container .button:hover {
-  background: #d8401c;
-  color: #fff;
+  background: transparent;
+  color: #d8401c;
 }
 
 /* --- Desktop --- */
@@ -310,7 +310,8 @@
   }
 
   .tabs-channel-left .tabs-channel-card-title {
-    font-size: 22px;
+    font-size: 26px;
+    font-weight: 400;
   }
 
   .tabs-channel-left .tabs-channel-card-meta {

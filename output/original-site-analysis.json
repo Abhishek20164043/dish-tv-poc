@@ -1,0 +1,503 @@
+{
+  "siteUrl": "https://www.dishtv.in/",
+  "capturedFrom": "https://main--dish-tv-poc--abhishek20164043.aem.page/",
+  "captureDate": "2026-03-16",
+  "pageDimensions": {
+    "pageWidth": 1920,
+    "pageHeight": 6934,
+    "viewportWidth": 1920,
+    "viewportHeight": 1080
+  },
+  "globalStyles": {
+    "fontFamily": "roboto, roboto-fallback, sans-serif",
+    "headingFontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+    "baseFontSize": "18px",
+    "baseLineHeight": "21.6px",
+    "baseColor": "rgb(19, 19, 19)",
+    "baseBackgroundColor": "rgb(255, 255, 255)"
+  },
+  "sections": {
+    "s1_hero": {
+      "name": "Hero Carousel",
+      "screenshotFile": "original-s1-hero.png",
+      "wrapper": {
+        "className": "carousel-promo-wrapper",
+        "absoluteTop": 84,
+        "width": 1920,
+        "height": 620
+      },
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0) (transparent)",
+        "fontSize": "18px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "slideImage": {
+        "width": 1920,
+        "height": 620,
+        "maxWidth": "100%"
+      },
+      "notes": "Full-width carousel with 4 slides, Previous/Next buttons, dot navigation at bottom"
+    },
+    "s2_cardsPack": {
+      "name": "Your Guide to Creating a Pack",
+      "screenshotFile": "original-s2-cardsPack.png",
+      "heading": {
+        "className": "default-content-wrapper (h1)",
+        "absoluteTop": 704,
+        "height": 77,
+        "text": "Your Guide to Creating a Pack",
+        "styles": {
+          "fontSize": "36px",
+          "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+          "fontWeight": "700",
+          "lineHeight": "45px",
+          "color": "rgb(255, 255, 255)",
+          "textAlign": "center"
+        }
+      },
+      "wrapper": {
+        "className": "cards-pack-wrapper",
+        "absoluteTop": 781,
+        "width": 1920,
+        "height": 761
+      },
+      "styles": {
+        "backgroundColor": "rgb(26, 26, 26)",
+        "padding": "24px 20px 40px",
+        "margin": "0px"
+      },
+      "accordionContainer": {
+        "maxWidth": "1200px",
+        "margin": "0px 340px",
+        "backgroundColor": "rgb(51, 51, 51)",
+        "borderRadius": "0px 0px 6px 6px",
+        "boxShadow": "rgba(0, 0, 0, 0.08) 0px 4px 32px 0px"
+      },
+      "accordionButton": {
+        "color": "rgb(255, 255, 255)",
+        "fontWeight": "500",
+        "fontSize": "18px",
+        "padding": "20px 0px",
+        "display": "flex",
+        "gap": "16px",
+        "borderRadius": "43.2px"
+      },
+      "items": [
+        "01 VALUE SAVER PACKS",
+        "02 ADD/DELETE CHANNELS",
+        "03 EXPLORE ALL PACKS"
+      ]
+    },
+    "s3_columnsApp": {
+      "name": "Manage Your Account",
+      "screenshotFile": "original-s3-columnsApp.png",
+      "wrapper": {
+        "className": "columns-app-wrapper",
+        "absoluteTop": 1542,
+        "width": 1920,
+        "height": 664
+      },
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "backgroundImage": "url(\"https://www.dishtv.in/content/dam/dishtv-aem-web-platform/homepage/Manage%20account%20container.png\")",
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "block": {
+        "maxWidth": "1200px",
+        "margin": "0px 320px",
+        "padding": "35px 40px",
+        "display": "flex",
+        "gap": "24px"
+      },
+      "image": {
+        "width": 360,
+        "height": 594,
+        "alt": "Manage ur acc mobile"
+      },
+      "heading": {
+        "text": "Manage your account with ease",
+        "fontSize": "28px",
+        "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+        "fontWeight": "700",
+        "lineHeight": "35px",
+        "color": "rgb(19, 19, 19)"
+      },
+      "tabs": {
+        "items": ["MOBILE APP", "WEB"],
+        "tabStyle": {
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "padding": "12px 24px",
+          "borderRadius": "33.6px",
+          "activeColor": "rgb(255, 87, 34)"
+        }
+      },
+      "listItems": [
+        "Recharge your account",
+        "Activate and deactivate channel in a flash",
+        "Manage your info packs or payment",
+        "Find your favourite channels and program",
+        "Scan TV screen from phone to fix the issue"
+      ]
+    },
+    "s4_banners": {
+      "name": "Promotional Banners (DishNXT HD + Watcho)",
+      "screenshotFile": "original-s4-banners.png",
+      "additionalScreenshot": "original-s4-banners-watcho.png",
+      "dishNXT": {
+        "className": "hero-promo-wrapper",
+        "absoluteTop": 2207,
+        "width": 1920,
+        "height": 827,
+        "styles": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        "image": {
+          "width": 1920,
+          "height": 827,
+          "alt": "Dishnxt-homepage-banner"
+        },
+        "linkUrl": "/products/dishtv-hd-set-top-box"
+      },
+      "watcho": {
+        "className": "carousel-promo-wrapper (2nd instance)",
+        "absoluteTop": 3034,
+        "width": 1920,
+        "height": 855,
+        "styles": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "padding": "0px",
+          "margin": "0px"
+        },
+        "image": {
+          "width": 1920,
+          "height": 855,
+          "alt": "Watcho-homepage-banner"
+        },
+        "linkUrl": "/packs-channel/all-in-one"
+      }
+    },
+    "s5_tabsChannel": {
+      "name": "Snack on the Content You Love",
+      "screenshotFile": "original-s5-tabsChannel.png",
+      "wrapper": {
+        "className": "tabs-channel-wrapper",
+        "absoluteTop": 3889,
+        "width": 1920,
+        "height": 945
+      },
+      "block": {
+        "backgroundColor": "rgb(26, 26, 26)",
+        "padding": "60px 40px"
+      },
+      "headings": {
+        "text": ["Snack on the content you love.", "All day, every day."],
+        "fontSize": "36px",
+        "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+        "fontWeight": "700",
+        "lineHeight": "46.8px",
+        "color": "rgb(255, 255, 255)",
+        "textAlign": "center"
+      },
+      "tabs": {
+        "items": ["LIVE TV", "ACTIVE SERVICES"],
+        "tabStyle": {
+          "fontSize": "14px",
+          "fontWeight": "700",
+          "padding": "12px 24px",
+          "color": "rgb(255, 255, 255)"
+        }
+      },
+      "tabPanel": {
+        "width": 1840,
+        "height": 632
+      },
+      "contentCards": {
+        "showsTitles": [
+          "Apollena", "Discovery Shows", "Yeh Rishta Kya Kehalate Hai",
+          "Jay Jagannath", "Teri Meri Doriyaann", "Do Dooni Pyar",
+          "Dragon Ball", "Udne Ki Asha", "Grizzy Lemmings",
+          "Meetha Khatta Pyar Humara", "Gum Hai Kisi Ke Pyar Mein",
+          "Larva", "Yeh Hai Chahatein", "Teen Titans Go"
+        ],
+        "cardFormat": "Image + Title + Duration"
+      }
+    },
+    "s6_pricing": {
+      "name": "Dish HD Entertainment Starts Here",
+      "screenshotFile": "original-s6-pricing.png",
+      "heading": {
+        "text": "Dish HD Entertainment Starts Here",
+        "absoluteTop": 4834,
+        "height": 85
+      },
+      "wrapper": {
+        "className": "cards-pricing-wrapper",
+        "absoluteTop": 4937,
+        "width": 1920,
+        "height": 596
+      },
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "padding": "0px 32px"
+      },
+      "cardList": {
+        "display": "grid",
+        "gap": "16px"
+      },
+      "card": {
+        "width": 608,
+        "height": 588,
+        "backgroundColor": "rgb(255, 255, 255)",
+        "borderRadius": "8px",
+        "boxShadow": "rgba(150, 146, 146, 0.2) 0px 1px 15px 1px"
+      },
+      "priceStyle": {
+        "color": "rgb(238, 72, 35)",
+        "fontSize": "25px",
+        "fontWeight": "600",
+        "lineHeight": "30px"
+      },
+      "plans": [
+        {
+          "name": "Dish HD",
+          "badge": "HD Plan With Pack",
+          "price": "1355*",
+          "subtitle": "With Three Months Pack",
+          "keyFeatures": [
+            "Enjoy Non-Stop TV for 2 Years**",
+            "3 Months Entertainment Pack Included",
+            "Flexibility of Customize pack & Switch Channels in HD/SD"
+          ],
+          "extras": ["Prime Lite", "5X Picture quality", "5.1 surround sound", "Service Warranty"]
+        },
+        {
+          "name": "Dish HD",
+          "badge": "HD Cashback Plan",
+          "price": "1694*",
+          "subtitle": "Get Rs. 3,600 Total Cashback",
+          "keyFeatures": [
+            "Rs.1,000 Instant cashback",
+            "10% cashback on every recharge upto Rs.2,600",
+            "Lifetime validity of the cashback"
+          ],
+          "extras": ["Prime Lite", "5X Picture quality", "5.1 surround sound", "Service Warranty"]
+        },
+        {
+          "name": "Dish HD",
+          "badge": "HD Plan With Pack",
+          "price": "931*",
+          "subtitle": "With One Month Pack",
+          "keyFeatures": [
+            "Price includes 1 month of entertainment pack",
+            "Value for money",
+            "HD set top box with accessories"
+          ],
+          "extras": ["Prime Lite", "5X Picture quality", "5.1 surround sound", "Service Warranty"]
+        }
+      ]
+    },
+    "s7_unsureAndFaq": {
+      "name": "Unsure Section + FAQ",
+      "screenshotFile": "original-s7-faq.png",
+      "unsure": {
+        "className": "default-content-wrapper",
+        "absoluteTop": 5532,
+        "height": 92,
+        "styles": {
+          "backgroundColor": "rgb(45, 45, 45)",
+          "padding": "40px 24px 0px",
+          "textAlign": "center"
+        },
+        "text": "Unsure which offer to choose?",
+        "subtext": "Give a missed call at 1800-274-9109"
+      },
+      "faq": {
+        "className": "accordion-faq-wrapper",
+        "absoluteTop": 5633,
+        "width": 1920,
+        "height": 391,
+        "styles": {
+          "backgroundColor": "rgb(45, 45, 45)",
+          "color": "rgb(158, 158, 158)",
+          "padding": "60px 24px"
+        },
+        "items": [
+          "What is DishTV?",
+          "Why choose DishTV?",
+          "How DishTV works?",
+          "Who should set DishTV?"
+        ],
+        "summaryStyle": {
+          "padding": "0px 46px 0px 16px",
+          "color": "rgb(158, 158, 158)",
+          "fontSize": "18px"
+        },
+        "loadMoreButton": {
+          "text": "LOAD MORE FAQs",
+          "color": "rgb(240, 76, 35)",
+          "fontSize": "14px",
+          "fontWeight": "600",
+          "padding": "10px 32px",
+          "borderRadius": "4px",
+          "margin": "24px auto 0px"
+        }
+      }
+    },
+    "s8_footer": {
+      "name": "Footer",
+      "screenshotFile": "original-s8-footer.png",
+      "wrapper": {
+        "className": "footer-wrapper",
+        "absoluteTop": 6024,
+        "width": 1920,
+        "height": 909
+      },
+      "styles": {
+        "backgroundColor": "rgb(32, 32, 32)",
+        "color": "rgb(228, 228, 228)",
+        "fontSize": "16px",
+        "fontFamily": "roboto, roboto-fallback, sans-serif",
+        "padding": "20px 0px 30px"
+      },
+      "helpSection": {
+        "heading": "Can we help you with something?",
+        "links": ["Add/Delete Channel", "Recharge & Offers", "My Account", "Raise a complaint", "Refresh your account"],
+        "ctaText": "GET HELP"
+      },
+      "linkColumns": {
+        "headingStyle": {
+          "fontSize": "14px",
+          "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+          "fontWeight": "700",
+          "color": "rgb(255, 255, 255)"
+        },
+        "columns": [
+          {
+            "heading": "PRODUCTS",
+            "links": ["DishTV HD", "dishSMRT HUB", "DishTV STB Dongle", "DishTV Key", "DishTV Universal Remote"]
+          },
+          {
+            "heading": "PACKS & CHANNELS",
+            "links": ["DishTV Combos", "Single Channels", "Watcho OTT Add-ons", "DishTV Add-ons", "Broadcaster Bouquets", "Free-To-Air (FTA) packs", "Active Services", "Modify My Pack"]
+          },
+          {
+            "heading": "GET HELP",
+            "links": ["Contact Us", "Quick Help", "Track Your Complaint", "Refresh Your Account", "Blogs"]
+          },
+          {
+            "heading": "SERVICES",
+            "links": ["Multi TV Connection", "Get a New Connection", "Channel Guide"]
+          },
+          {
+            "heading": "COMPANY",
+            "links": ["About Us", "Investors", "Careers", "Privacy Policy"]
+          }
+        ]
+      },
+      "dealerLocator": {
+        "heading": "LOCATE A DEALER",
+        "placeholder": "Enter Pincode"
+      },
+      "socialMedia": {
+        "heading": "FOLLOW US",
+        "links": ["Facebook", "YouTube", "X", "Instagram"]
+      },
+      "bottomBar": {
+        "links": ["Sitemap", "Terms & Conditions", "Privacy Policy", "Regulatory", "Trade Partners", "Offer Terms & Conditions"],
+        "copyright": "Copyright 2026. All Rights Reserved"
+      }
+    }
+  },
+  "sectionMap": [
+    { "order": 1, "name": "Header/Nav", "className": "header-wrapper + nav-wrapper", "top": 0, "height": 84 },
+    { "order": 2, "name": "Hero Carousel", "className": "carousel-promo-wrapper", "top": 84, "height": 620 },
+    { "order": 3, "name": "Guide Heading", "className": "default-content-wrapper (h1)", "top": 704, "height": 77 },
+    { "order": 4, "name": "Cards Pack Accordion", "className": "cards-pack-wrapper", "top": 781, "height": 761 },
+    { "order": 5, "name": "Columns App (Manage Account)", "className": "columns-app-wrapper", "top": 1542, "height": 664 },
+    { "order": 6, "name": "DishNXT HD Banner", "className": "hero-promo-wrapper", "top": 2207, "height": 827 },
+    { "order": 7, "name": "Watcho Banner Carousel", "className": "carousel-promo-wrapper (2nd)", "top": 3034, "height": 855 },
+    { "order": 8, "name": "Tabs Channel (Snack on Content)", "className": "tabs-channel-wrapper", "top": 3889, "height": 945 },
+    { "order": 9, "name": "Pricing Heading", "className": "default-content-wrapper (h2)", "top": 4834, "height": 85 },
+    { "order": 10, "name": "Pricing Cards", "className": "cards-pricing-wrapper", "top": 4937, "height": 596 },
+    { "order": 11, "name": "Unsure CTA", "className": "default-content-wrapper", "top": 5532, "height": 92 },
+    { "order": 12, "name": "FAQ Accordion", "className": "accordion-faq-wrapper", "top": 5633, "height": 391 },
+    { "order": 13, "name": "Footer", "className": "footer-wrapper", "top": 6024, "height": 909 }
+  ],
+  "screenshotFiles": {
+    "fullPage": "original-fullpage.png",
+    "s1_hero": "original-s1-hero.png",
+    "s2_cardsPack": "original-s2-cardsPack.png",
+    "s3_columnsApp": "original-s3-columnsApp.png",
+    "s4_banners_dishnxt": "original-s4-banners.png",
+    "s4_banners_watcho": "original-s4-banners-watcho.png",
+    "s5_tabsChannel": "original-s5-tabsChannel.png",
+    "s6_pricing": "original-s6-pricing.png",
+    "s7_faq": "original-s7-faq.png",
+    "s8_footer": "original-s8-footer.png"
+  },
+  "colorPalette": {
+    "primary": {
+      "orange": "rgb(255, 87, 34)",
+      "deepOrange": "rgb(238, 72, 35)",
+      "ctaOrange": "rgb(240, 76, 35)"
+    },
+    "backgrounds": {
+      "white": "rgb(255, 255, 255)",
+      "lightGrey": "rgb(245, 245, 245)",
+      "darkGrey": "rgb(26, 26, 26)",
+      "mediumDarkGrey": "rgb(45, 45, 45)",
+      "accordionGrey": "rgb(51, 51, 51)",
+      "footerDark": "rgb(32, 32, 32)"
+    },
+    "text": {
+      "dark": "rgb(19, 19, 19)",
+      "white": "rgb(255, 255, 255)",
+      "lightGrey": "rgb(228, 228, 228)",
+      "mediumGrey": "rgb(158, 158, 158)",
+      "footerWhite": "rgba(255, 255, 255, 0.86)"
+    }
+  },
+  "typography": {
+    "h1": {
+      "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+      "fontSize": "36px",
+      "fontWeight": "700",
+      "lineHeight": "45px"
+    },
+    "h2": {
+      "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+      "fontSize": "28px-36px",
+      "fontWeight": "700",
+      "lineHeight": "35px-46.8px"
+    },
+    "h4_footer": {
+      "fontFamily": "roboto-condensed, roboto-condensed-fallback, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "700",
+      "lineHeight": "17.5px"
+    },
+    "body": {
+      "fontFamily": "roboto, roboto-fallback, sans-serif",
+      "fontSize": "18px",
+      "fontWeight": "400",
+      "lineHeight": "21.6px"
+    },
+    "tabs": {
+      "fontFamily": "roboto, roboto-fallback, sans-serif",
+      "fontSize": "14px",
+      "fontWeight": "700"
+    },
+    "price": {
+      "fontFamily": "roboto, roboto-fallback, sans-serif",
+      "fontSize": "25px",
+      "fontWeight": "600",
+      "color": "rgb(238, 72, 35)"
+    }
+  }
+}
