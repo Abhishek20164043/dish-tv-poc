@@ -31,10 +31,11 @@
 }
 
 .columns-app-content h2 {
-  color: var(--text-color);
+  color: #444;
   margin: 0 0 24px;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 500;
+  font-family: var(--body-font-family);
 }
 
 /* Tab bar */
@@ -49,18 +50,18 @@
   background: none;
   border: none;
   color: #666;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
   padding: 12px 24px;
   cursor: pointer;
   position: relative;
   font-family: var(--body-font-family);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.65px;
 }
 
 .columns-app-tab.active {
-  color: #ff5722;
+  color: #f04c23;
 }
 
 .columns-app-tab.active::after {
@@ -70,7 +71,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #ff5722;
+  background: #f04c23;
 }
 
 .columns-app-tab:hover {

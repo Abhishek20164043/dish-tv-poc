@@ -1,10 +1,16 @@
 /* FAQ heading */
 .accordion-faq-heading {
   text-align: center;
-  color: #fff;
-  font-size: 34px;
-  font-weight: 500;
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
   margin-bottom: 1em;
+}
+
+/* Dark theme FAQ heading */
+.accordion-faq-container .accordion-faq-heading {
+  color: #fff;
 }
 
 .accordion-faq details {
@@ -23,12 +29,15 @@
 
 .accordion-faq details summary {
   position: relative;
-  padding: 0 16px;
-  padding-right: 46px;
+  padding: 0 40px;
+  padding-right: 80px;
   cursor: pointer;
   list-style: none;
   overflow: auto;
   transition: background-color 0.2s;
+  font-size: 16px;
+  font-weight: 700;
+  color: #828282;
 }
 
 .accordion-faq details[open] summary {

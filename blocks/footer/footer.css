@@ -3,13 +3,13 @@ footer {
   background-color: #202020;
   color: #e4e4e4;
   font-size: var(--body-font-size-s);
-  padding: 20px 0 30px;
+  padding: 0;
 }
 
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 128px 64px 24px;
 }
 
 footer .footer p {
@@ -23,8 +23,8 @@ footer a.button:any-link {
   padding: 0;
   margin: 0;
   border-radius: 0;
-  color: #f04c23;
-  font-size: 14px;
+  color: rgb(255 255 255 / 86%);
+  font-size: 13px;
 }
 
 footer a.button:hover {
@@ -46,8 +46,9 @@ footer .footer .section:first-child {
 
 footer .footer .section:first-child h2 {
   color: #444;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
+  font-family: var(--body-font-family);
   margin-bottom: 20px;
 }
 
@@ -111,8 +112,8 @@ footer .footer .section:nth-child(2) > div {
 }
 
 footer .footer .section:nth-child(2) h4 {
-  color: #fff;
-  font-size: 14px;
+  color: #e4e4e4;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -170,7 +171,7 @@ footer .footer .section:nth-child(2) li {
 }
 
 footer .footer .section:nth-child(2) > div li a:any-link {
-  color: #999;
+  color: rgb(255 255 255 / 86%);
   text-decoration: none;
   font-size: 13px;
 }
@@ -186,8 +187,8 @@ footer .footer .section:nth-child(3) {
 }
 
 footer .footer .section:nth-child(3) h4:nth-child(n) {
-  color: #fff;
-  font-size: 14px;
+  color: #e4e4e4;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -341,7 +342,7 @@ footer .footer .section:nth-child(4) > div > p:first-child a:hover {
     display: grid;
     grid-template-columns: 1fr auto;
     max-width: 1680px;
-    padding: 40px 80px 24px;
+    padding: 128px 64px 24px;
   }
 
   /* Sections 1 and 4 span full width */

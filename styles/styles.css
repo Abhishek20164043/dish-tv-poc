@@ -15,7 +15,7 @@
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
+  --text-color: #000;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
@@ -63,7 +63,7 @@
 
     /* heading sizes */
     --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
+    --heading-font-size-xl: 34px;
     --heading-font-size-l: 28px;
     --heading-font-size-m: 22px;
     --heading-font-size-s: 20px;
@@ -449,8 +449,9 @@ main > .section > .default-content-wrapper:has(+ .cards-pricing-wrapper) {
   background-color: rgb(245 245 245);
   padding-top: 40px;
   padding-bottom: 0;
-  text-align: center;
+  text-align: left;
   color: var(--text-color);
+  padding-left: 80px;
 }
 
 /* stylelint-disable no-descending-specificity */
