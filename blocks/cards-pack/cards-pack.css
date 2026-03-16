@@ -4,11 +4,11 @@
 }
 
 .cards-pack-accordion {
-  max-width: 1200px;
+  max-width: none;
   margin: 0 auto;
-  background-color: #333;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 4px 32px rgb(0 0 0 / 8%);
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .cards-pack-item {
