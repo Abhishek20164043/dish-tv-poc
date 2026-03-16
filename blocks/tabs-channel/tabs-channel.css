@@ -84,74 +84,123 @@
   display: none;
 }
 
-/* Two-row grid container */
-.tabs-channel-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Each row: horizontal scrolling */
-.tabs-channel-row {
+/* --- Slider: left featured card + right 2×2 grid --- */
+.tabs-channel-slider {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
-  scrollbar-width: none;
 }
 
-.tabs-channel-row::-webkit-scrollbar {
-  display: none;
+/* LEFT: large featured card (~50%) */
+.tabs-channel-left {
+  flex: 0 0 calc(50% - 8px);
+  position: relative;
 }
 
-/* Show cards */
-.tabs-channel-card {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
+.tabs-channel-left .tabs-channel-card {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.tabs-channel-card:hover {
-  transform: scale(1.03);
-}
-
-.tabs-channel-card-img {
-  line-height: 0;
   width: 100%;
   aspect-ratio: 3 / 4;
-  overflow: hidden;
 }
 
-.tabs-channel-card-img picture {
+.tabs-channel-left .tabs-channel-card[hidden] {
+  display: none;
+}
+
+.tabs-channel-left .tabs-channel-card-img {
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.tabs-channel-left .tabs-channel-card-img picture {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.tabs-channel-card-img img {
+.tabs-channel-left .tabs-channel-card-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Text overlay at bottom of card */
-.tabs-channel-card-overlay {
+.tabs-channel-left .tabs-channel-card-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px 12px 12px;
+  padding: 20px 16px 16px;
   background: linear-gradient(to top, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 40%) 60%, transparent 100%);
 }
 
-.tabs-channel-card-title {
+.tabs-channel-left .tabs-channel-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.tabs-channel-left .tabs-channel-card-meta {
   font-size: 14px;
+  color: #ccc;
+}
+
+/* RIGHT: 2×2 grid of smaller cards (~50%) */
+.tabs-channel-right {
+  flex: 0 0 calc(50% - 8px);
+  overflow: hidden;
+}
+
+.tabs-channel-right-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tabs-channel-right-page[hidden] {
+  display: none;
+}
+
+.tabs-channel-right .tabs-channel-card {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  aspect-ratio: 3 / 4;
+}
+
+.tabs-channel-right .tabs-channel-card-img {
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.tabs-channel-right .tabs-channel-card-img picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.tabs-channel-right .tabs-channel-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tabs-channel-right .tabs-channel-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 8px 8px;
+  background: linear-gradient(to top, rgb(0 0 0 / 85%) 0%, rgb(0 0 0 / 40%) 60%, transparent 100%);
+}
+
+.tabs-channel-right .tabs-channel-card-title {
+  font-size: 13px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 2px;
@@ -160,15 +209,53 @@
   text-overflow: ellipsis;
 }
 
-.tabs-channel-card-meta {
-  font-size: 12px;
+.tabs-channel-right .tabs-channel-card-meta {
+  font-size: 11px;
   color: #ccc;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* CTA link (e.g. CHANNEL GUIDE) */
+/* --- Navigation arrows --- */
+.tabs-channel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.tabs-channel-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.tabs-channel-nav-btn:hover {
+  border-color: #f04c23;
+  background-color: rgb(240 76 35 / 15%);
+}
+
+.tabs-channel-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.tabs-channel-nav-btn:disabled:hover {
+  border-color: #555;
+  background-color: transparent;
+}
+
+/* --- CTA link (e.g. CHANNEL GUIDE) --- */
 .tabs-channel-cta {
   text-align: center;
   margin-top: 24px;
@@ -198,6 +285,7 @@
   color: #fff;
 }
 
+/* --- Desktop --- */
 @media (width >= 900px) {
   .tabs-channel {
     padding: 60px 40px;
@@ -207,7 +295,19 @@
     font-size: 36px;
   }
 
-  .tabs-channel-card {
-    flex: 0 0 320px;
+  .tabs-channel-left .tabs-channel-card-title {
+    font-size: 22px;
+  }
+
+  .tabs-channel-left .tabs-channel-card-meta {
+    font-size: 16px;
+  }
+
+  .tabs-channel-right .tabs-channel-card-title {
+    font-size: 14px;
+  }
+
+  .tabs-channel-right .tabs-channel-card-meta {
+    font-size: 12px;
   }
 }

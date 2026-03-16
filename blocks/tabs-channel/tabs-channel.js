@@ -2,6 +2,8 @@
 import { toClassName } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+const ITEMS_PER_RIGHT_PAGE = 4;
+
 function buildShowCard(p) {
   const card = document.createElement('div');
   card.className = 'tabs-channel-card';
@@ -47,42 +49,120 @@ function processPanel(panel) {
 
   if (showParagraphs.length === 0) return;
 
-  // Split into two rows (first half = top row, second half = bottom row)
+  // Split into left (first half) and right (second half)
   const half = Math.ceil(showParagraphs.length / 2);
-  const topItems = showParagraphs.slice(0, half);
-  const bottomItems = showParagraphs.slice(half);
+  const leftItems = showParagraphs.slice(0, half);
+  const rightItems = showParagraphs.slice(half);
 
-  // Create grid container with two rows
-  const grid = document.createElement('div');
-  grid.className = 'tabs-channel-grid';
+  // Build slider container
+  const slider = document.createElement('div');
+  slider.className = 'tabs-channel-slider';
 
-  // Top row
-  const topRow = document.createElement('div');
-  topRow.className = 'tabs-channel-row';
-  topItems.forEach((p) => {
-    topRow.append(buildShowCard(p));
+  // LEFT side: single large featured card
+  const leftSide = document.createElement('div');
+  leftSide.className = 'tabs-channel-left';
+  const leftCards = leftItems.map((p) => {
+    const card = buildShowCard(p);
     p.remove();
+    return card;
+  });
+  leftCards.forEach((card, i) => {
+    if (i > 0) card.setAttribute('hidden', '');
+    leftSide.append(card);
   });
 
-  // Bottom row
-  const bottomRow = document.createElement('div');
-  bottomRow.className = 'tabs-channel-row';
-  bottomItems.forEach((p) => {
-    bottomRow.append(buildShowCard(p));
-    p.remove();
+  // RIGHT side: 2×2 grid pages
+  const rightSide = document.createElement('div');
+  rightSide.className = 'tabs-channel-right';
+  const totalRightPages = Math.ceil(rightItems.length / ITEMS_PER_RIGHT_PAGE);
+  const rightPages = [];
+
+  for (let page = 0; page < totalRightPages; page += 1) {
+    const pageEl = document.createElement('div');
+    pageEl.className = 'tabs-channel-right-page';
+    const start = page * ITEMS_PER_RIGHT_PAGE;
+    const end = Math.min(start + ITEMS_PER_RIGHT_PAGE, rightItems.length);
+    for (let j = start; j < end; j += 1) {
+      pageEl.append(buildShowCard(rightItems[j]));
+      rightItems[j].remove();
+    }
+    if (page > 0) pageEl.setAttribute('hidden', '');
+    rightPages.push(pageEl);
+    rightSide.append(pageEl);
+  }
+
+  slider.append(leftSide);
+  slider.append(rightSide);
+
+  // Navigation arrows
+  let currentLeft = 0;
+
+  const nav = document.createElement('div');
+  nav.className = 'tabs-channel-nav';
+
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'tabs-channel-nav-btn tabs-channel-prev';
+  prevBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>';
+  prevBtn.setAttribute('aria-label', 'Previous slide');
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'tabs-channel-nav-btn tabs-channel-next';
+  nextBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>';
+  nextBtn.setAttribute('aria-label', 'Next slide');
+
+  function updateSlider() {
+    // Update left cards: show/hide
+    leftCards.forEach((card, i) => {
+      if (i === currentLeft) card.removeAttribute('hidden');
+      else card.setAttribute('hidden', '');
+    });
+
+    // Calculate right page from left position (proportional sync)
+    const leftProgress = leftCards.length > 1
+      ? currentLeft / (leftCards.length - 1)
+      : 0;
+    const rightPageIndex = Math.min(
+      Math.floor(leftProgress * totalRightPages),
+      totalRightPages - 1,
+    );
+
+    rightPages.forEach((page, i) => {
+      if (i === rightPageIndex) page.removeAttribute('hidden');
+      else page.setAttribute('hidden', '');
+    });
+
+    prevBtn.disabled = currentLeft === 0;
+    nextBtn.disabled = currentLeft === leftCards.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentLeft > 0) {
+      currentLeft -= 1;
+      updateSlider();
+    }
   });
 
-  grid.append(topRow);
-  grid.append(bottomRow);
-
-  // Move any remaining link paragraphs (e.g. CHANNEL GUIDE) after the grid
-  const linkParagraphs = [...contentDiv.querySelectorAll('p')].filter((p) => p.querySelector('a') && !p.querySelector('picture'));
-  linkParagraphs.forEach((p) => {
-    p.classList.add('tabs-channel-cta');
+  nextBtn.addEventListener('click', () => {
+    if (currentLeft < leftCards.length - 1) {
+      currentLeft += 1;
+      updateSlider();
+    }
   });
 
-  contentDiv.append(grid);
+  nav.append(prevBtn);
+  nav.append(nextBtn);
+
+  // Collect CTA links (e.g. CHANNEL GUIDE)
+  const linkParagraphs = [...contentDiv.querySelectorAll('p')].filter(
+    (p) => p.querySelector('a') && !p.querySelector('picture'),
+  );
+  linkParagraphs.forEach((p) => p.classList.add('tabs-channel-cta'));
+
+  contentDiv.append(slider);
+  contentDiv.append(nav);
   linkParagraphs.forEach((p) => contentDiv.append(p));
+
+  updateSlider();
 }
 
 export default async function decorate(block) {
@@ -137,7 +217,7 @@ export default async function decorate(block) {
     tab.remove();
     moveInstrumentation(button.querySelector('p'), null);
 
-    // Process panel content into two-row grid of show cards
+    // Process panel content into left/right split slider
     processPanel(tabpanel);
   });
 
