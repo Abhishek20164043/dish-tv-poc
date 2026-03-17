@@ -64,6 +64,35 @@ export default async function decorate(block) {
     });
   }
 
+  // Replace external social media icons with local SVGs
+  const socialIconMap = {
+    facebook: { icon: '/icons/facebook.svg', alt: 'Facebook' },
+    youtube: { icon: '/icons/youtube.svg', alt: 'YouTube' },
+    twitter: { icon: '/icons/x.svg', alt: 'X' },
+    instagram: { icon: '/icons/instagram.svg', alt: 'Instagram' },
+  };
+  const socialSection = footer.querySelector('.section:nth-child(3)');
+  if (socialSection) {
+    socialSection.querySelectorAll('a[href]').forEach((a) => {
+      const href = (a.getAttribute('href') || '').toLowerCase();
+      Object.entries(socialIconMap).forEach(([key, { icon, alt }]) => {
+        if (href.includes(key)) {
+          // Remove any picture element or existing img, replace with clean local img
+          const picture = a.querySelector('picture');
+          if (picture) picture.remove();
+          const oldImg = a.querySelector('img');
+          if (oldImg) oldImg.remove();
+          const img = document.createElement('img');
+          img.src = icon;
+          img.alt = alt;
+          img.width = 37;
+          img.height = 37;
+          a.appendChild(img);
+        }
+      });
+    });
+  }
+
   // Clean up pipe separators in legal links (section 4)
   const legalSection = footer.querySelector('.section:nth-child(4)');
   if (legalSection) {
