@@ -73,6 +73,24 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Wraps accent phrases in headings with styled spans.
+ * @param {Element} main The main element
+ */
+function decorateAccentHeadings(main) {
+  const accentPhrases = ['Starts Here', 'Curated Offerings'];
+  main.querySelectorAll('h1, h2').forEach((heading) => {
+    accentPhrases.forEach((phrase) => {
+      if (heading.textContent.includes(phrase) && !heading.querySelector('.heading-accent')) {
+        heading.innerHTML = heading.innerHTML.replace(
+          phrase,
+          `<span class="heading-accent">${phrase}</span>`,
+        );
+      }
+    });
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -85,6 +103,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateAccentHeadings(main);
 }
 
 /**

@@ -228,6 +228,11 @@ main img {
   width: 100%;
 }
 
+/* Accent text in headings (e.g. "Starts Here", "Curated Offerings") */
+.heading-accent {
+  color: #f04c23;
+}
+
 /* sections */
 main > .section {
   margin: 40px 0;

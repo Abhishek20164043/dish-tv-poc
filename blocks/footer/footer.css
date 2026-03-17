@@ -34,18 +34,18 @@ footer a.button:hover {
 
 /* Section 1: "Can we help you with something?" */
 footer .footer .section:first-child {
-  background-color: #fff;
+  background-color: #2d2d2d;
   padding: 35px 48px;
   text-align: center;
-  border-radius: 6px;
-  margin: 24px 24px 0;
-  box-shadow: 0 4px 30px rgb(0 0 0 / 15%);
+  border-radius: 0;
+  margin: 0;
+  box-shadow: none;
   position: relative;
   z-index: 2;
 }
 
 footer .footer .section:first-child h2 {
-  color: #444;
+  color: #fff;
   font-size: 22px;
   font-weight: 500;
   font-family: var(--body-font-family);
@@ -69,18 +69,18 @@ footer .footer .section:first-child li {
 footer .footer .section:first-child li a:any-link {
   display: block;
   padding: 12px 30px;
-  border: 1px solid rgb(128 128 128 / 32%);
+  border: 1px solid rgb(255 255 255 / 20%);
   border-radius: 36px;
   color: #f04c23;
   text-decoration: none;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 footer .footer .section:first-child li a:hover {
-  background-color: #f5f5f5;
+  background-color: rgba(255 255 255 / 10%);
   color: #f04c23;
 }
 

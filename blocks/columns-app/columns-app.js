@@ -31,8 +31,12 @@ export default function decorate(block) {
   const contentCol = document.createElement('div');
   contentCol.className = 'columns-app-content';
 
-  // Heading
+  // Heading - wrap "with ease" in accent span for orange styling
   if (heading) {
+    heading.innerHTML = heading.innerHTML.replace(
+      /with ease/i,
+      '<span class="columns-app-accent">with ease</span>',
+    );
     contentCol.append(heading);
   }
 

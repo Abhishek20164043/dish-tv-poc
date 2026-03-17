@@ -8,9 +8,11 @@
   margin-bottom: 1em;
 }
 
-/* Dark theme FAQ heading */
+/* Dark theme FAQ heading - orange to match original */
 .accordion-faq-container .accordion-faq-heading {
-  color: #fff;
+  color: #f04c23;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .accordion-faq details {
@@ -104,10 +106,10 @@
   color: #fff;
 }
 
-/* Dark theme load more */
+/* Dark theme load more - subtle grey border matching original */
 .accordion-faq-container .accordion-faq-load-more {
-  border-color: #f04c23;
-  color: #f04c23;
+  border-color: #888;
+  color: #ccc;
 }
 
 .accordion-faq-container .accordion-faq-load-more:hover {

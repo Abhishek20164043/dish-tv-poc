@@ -24,6 +24,13 @@
   font-family: var(--body-font-family);
 }
 
+/* "All day, every day." subtitle in orange italic */
+.tabs-channel-heading h2 + h2 {
+  color: #f04c23;
+  font-style: italic;
+  font-weight: 700;
+}
+
 /* Tab list */
 .tabs-channel .tabs-channel-list {
   display: flex;
@@ -283,6 +290,7 @@
 .tabs-channel-cta {
   text-align: center;
   margin-top: 24px;
+  margin-bottom: 0;
 }
 
 .tabs-channel-cta a,
@@ -313,10 +321,19 @@
 @media (width >= 900px) {
   .tabs-channel {
     padding: 60px 40px;
+    position: relative;
   }
 
   .tabs-channel-heading h2 {
     font-size: 34px;
+  }
+
+  /* Move CTA to top-right on desktop */
+  .tabs-channel-cta {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    margin-top: 0;
   }
 
   .tabs-channel-left .tabs-channel-card-title {

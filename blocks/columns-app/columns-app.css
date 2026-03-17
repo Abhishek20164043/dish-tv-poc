@@ -38,12 +38,20 @@
   font-family: var(--body-font-family);
 }
 
-/* Tab bar */
+.columns-app-accent {
+  color: #f04c23;
+  display: block;
+}
+
+/* Tab bar - pill-shaped toggle matching original */
 .columns-app-tabs {
-  display: flex;
+  display: inline-flex;
   gap: 0;
   margin-bottom: 16px;
-  border-bottom: 2px solid #ddd;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  background: #f5f5f5;
+  overflow: hidden;
 }
 
 .columns-app-tab {
@@ -52,30 +60,26 @@
   color: #666;
   font-size: 13px;
   font-weight: 500;
-  padding: 12px 24px;
+  padding: 10px 24px;
   cursor: pointer;
   position: relative;
   font-family: var(--body-font-family);
   text-transform: uppercase;
   letter-spacing: 0.65px;
+  border-radius: 24px;
 }
 
 .columns-app-tab.active {
-  color: #f04c23;
-}
-
-.columns-app-tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-  height: 2px;
+  color: #fff;
   background: #f04c23;
 }
 
 .columns-app-tab:hover {
   color: #ff7043;
+}
+
+.columns-app-tab.active:hover {
+  color: #fff;
 }
 
 /* Panels */
@@ -106,7 +110,7 @@
 .columns-app-feature.active {
   color: var(--text-color);
   border-left-color: #ff5722;
-  background: rgba(255 87 34 / 10%);
+  background: transparent;
   font-weight: 600;
 }
 
