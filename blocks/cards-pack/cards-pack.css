@@ -24,13 +24,32 @@
   justify-content: center;
 }
 
-/* "Choose from Curated Offerings" subheading */
+/* "Choose from Curated Offerings" subheading with watermark */
+.cards-pack-subheading-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.cards-pack-watermark {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 140px;
+  font-weight: 900;
+  color: rgb(255 255 255 / 7%);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .cards-pack-subheading {
   font-size: 28px;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 24px;
   font-family: var(--body-font-family);
+  position: relative;
+  z-index: 1;
 }
 
 .cards-pack-subheading-accent {
@@ -53,25 +72,6 @@
   border-bottom: none;
 }
 
-/* Large backdrop/watermark number behind each accordion item */
-.cards-pack-item::before {
-  content: attr(data-num);
-  position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 120px;
-  font-weight: 900;
-  color: rgb(255 255 255 / 7%);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.cards-pack-item.active::before {
-  top: 20px;
-  transform: none;
-}
 
 .cards-pack-item-header {
   display: flex;

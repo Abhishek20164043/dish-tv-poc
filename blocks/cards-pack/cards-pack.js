@@ -113,13 +113,30 @@ export default function decorate(block) {
     accordion.append(item);
   });
 
-  // Add "Choose from Curated Offerings" subheading above accordion
+  // Add "Choose from Curated Offerings" subheading with watermark behind it
+  const subheadingWrapper = document.createElement('div');
+  subheadingWrapper.className = 'cards-pack-subheading-wrapper';
+
+  const watermark = document.createElement('span');
+  watermark.className = 'cards-pack-watermark';
+  watermark.textContent = '01';
+
   const subheading = document.createElement('div');
   subheading.className = 'cards-pack-subheading';
   subheading.innerHTML = 'Choose from <span class="cards-pack-subheading-accent">Curated Offerings</span>';
 
+  subheadingWrapper.append(watermark, subheading);
+
+  // Update watermark when accordion item changes
+  accordion.addEventListener('click', () => {
+    const activeItem = accordion.querySelector('.cards-pack-item.active');
+    if (activeItem) {
+      watermark.textContent = activeItem.dataset.num;
+    }
+  });
+
   // Assemble layout
-  left.append(subheading, accordion);
+  left.append(subheadingWrapper, accordion);
   images.forEach((img) => right.append(img));
   layout.append(left, right);
 
