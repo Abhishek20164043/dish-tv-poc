@@ -238,18 +238,24 @@
   cursor: pointer;
 }
 
-.cards-pricing-antenna-option input[type="radio"] {
-  accent-color: #f04c23;
+.cards-pricing-antenna-option input[type="checkbox"] {
+  accent-color: #1976d2;
   width: 16px;
   height: 16px;
   margin: 0;
   cursor: pointer;
 }
 
-/* --- Select button (inside bottom section) --- */
+/* --- Select button row (button + info icon) --- */
+.cards-pricing-select-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .cards-pricing-select {
   flex: 1;
-  padding: 8px 12px;
+  padding: 10px 12px;
   background-color: #ee4823;
   color: #fff;
   border: none;
@@ -264,6 +270,32 @@
 
 .cards-pricing-select:hover {
   background-color: #d9411d;
+}
+
+/* Info (i) icon beside SELECT button */
+.cards-pricing-info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ee4823;
+  background: transparent;
+  color: #ee4823;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.cards-pricing-info-icon:hover {
+  background-color: #ee4823;
+  color: #fff;
 }
 
 /* --- Language Selection Modal --- */

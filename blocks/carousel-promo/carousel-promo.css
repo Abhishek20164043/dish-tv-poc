@@ -156,6 +156,11 @@
   left: calc(50% - 2px);
 }
 
+/* --- Instant Recharge widget overlay --- */
+.carousel-promo-recharge-widget {
+  display: none;
+}
+
 @media (width >= 600px) {
   .carousel-promo .carousel-promo-navigation-buttons {
     left: 24px;
@@ -170,5 +175,76 @@
 
   .carousel-promo .carousel-promo-slide .carousel-promo-slide-content[data-align='justify'] {
     --slide-content-width: auto;
+  }
+
+  /* Show Instant Recharge widget on desktop */
+  .carousel-promo-recharge-widget {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    width: 260px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 25%);
+  }
+
+  .recharge-widget-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .recharge-widget-icon {
+    font-size: 20px;
+    color: #1a1a1a;
+  }
+
+  .recharge-widget-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-family: var(--body-font-family);
+  }
+
+  .recharge-widget-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: var(--body-font-family);
+    color: #666;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  .recharge-widget-input:focus {
+    outline: none;
+    border-color: #f04c23;
+  }
+
+  .recharge-widget-btn {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--body-font-family);
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .recharge-widget-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
   }
 }

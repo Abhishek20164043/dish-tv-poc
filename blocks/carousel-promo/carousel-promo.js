@@ -181,4 +181,22 @@ export default async function decorate(block) {
       }, 4000);
     });
   }
+
+  // Add Instant Recharge widget to the first (hero) carousel only
+  const isFirstCarousel = !block.closest('.section')
+    ?.querySelector('.carousel-promo-wrapper')
+    ?.previousElementSibling?.classList?.contains('carousel-promo-wrapper');
+  if (isFirstCarousel && !isSingleSlide) {
+    const widget = document.createElement('div');
+    widget.className = 'carousel-promo-recharge-widget';
+    widget.innerHTML = `
+      <div class="recharge-widget-header">
+        <span class="recharge-widget-icon">&#9889;</span>
+        <span class="recharge-widget-title">Instant Recharge</span>
+      </div>
+      <input type="text" class="recharge-widget-input" placeholder="Enter Registered Mobile No. OR VC No.">
+      <button class="recharge-widget-btn">PROCEED</button>
+    `;
+    block.appendChild(widget);
+  }
 }

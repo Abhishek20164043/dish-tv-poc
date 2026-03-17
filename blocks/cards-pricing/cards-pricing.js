@@ -94,8 +94,8 @@ function createAntennaToggle(li, antennaData, productPic, priceEl) {
   const yesLabel = document.createElement('label');
   yesLabel.className = 'cards-pricing-antenna-option';
   const yesInput = document.createElement('input');
-  yesInput.type = 'radio';
-  yesInput.name = `antenna-${li.dataset.cardIndex}`;
+  yesInput.type = 'checkbox';
+  yesInput.name = `antenna-yes-${li.dataset.cardIndex}`;
   yesInput.value = 'yes';
   const yesText = document.createElement('span');
   yesText.textContent = 'Yes';
@@ -105,8 +105,8 @@ function createAntennaToggle(li, antennaData, productPic, priceEl) {
   const noLabel = document.createElement('label');
   noLabel.className = 'cards-pricing-antenna-option';
   const noInput = document.createElement('input');
-  noInput.type = 'radio';
-  noInput.name = `antenna-${li.dataset.cardIndex}`;
+  noInput.type = 'checkbox';
+  noInput.name = `antenna-no-${li.dataset.cardIndex}`;
   noInput.value = 'no';
   noInput.checked = true;
   const noText = document.createElement('span');
@@ -133,8 +133,15 @@ function createAntennaToggle(li, antennaData, productPic, priceEl) {
     }
   };
 
-  yesInput.addEventListener('change', () => updateCard(true));
-  noInput.addEventListener('change', () => updateCard(false));
+  // Mutual exclusivity for checkboxes (mimics radio behavior)
+  yesInput.addEventListener('change', () => {
+    noInput.checked = !yesInput.checked;
+    updateCard(yesInput.checked);
+  });
+  noInput.addEventListener('change', () => {
+    yesInput.checked = !noInput.checked;
+    updateCard(yesInput.checked);
+  });
 
   return section;
 }
@@ -344,11 +351,23 @@ export default function decorate(block) {
 
       const selectLink = textCol.querySelector('p > a');
       if (selectLink) {
+        const selectRow = document.createElement('div');
+        selectRow.className = 'cards-pricing-select-row';
+
         const btn = document.createElement('button');
         btn.className = 'cards-pricing-select';
         btn.textContent = selectLink.textContent;
         btn.addEventListener('click', () => { modalOverlay.hidden = false; });
-        bottomSection.appendChild(btn);
+        selectRow.appendChild(btn);
+
+        // Info (i) icon matching original design
+        const infoBtn = document.createElement('button');
+        infoBtn.className = 'cards-pricing-info-icon';
+        infoBtn.setAttribute('aria-label', 'More information');
+        infoBtn.textContent = 'i';
+        selectRow.appendChild(infoBtn);
+
+        bottomSection.appendChild(selectRow);
       }
 
       li.appendChild(bottomSection);

@@ -42,7 +42,7 @@ export default function decorate(block) {
 
     const loadMore = document.createElement('button');
     loadMore.className = 'accordion-faq-load-more';
-    loadMore.textContent = 'LOAD MORE FAQs';
+    loadMore.textContent = "SHOW FAQ's";
     loadMore.addEventListener('click', () => {
       block.querySelectorAll('.accordion-faq-hidden').forEach((item) => {
         item.classList.remove('accordion-faq-hidden');

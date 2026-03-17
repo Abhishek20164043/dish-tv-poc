@@ -113,8 +113,13 @@ export default function decorate(block) {
     accordion.append(item);
   });
 
+  // Add "Choose from Curated Offerings" subheading above accordion
+  const subheading = document.createElement('div');
+  subheading.className = 'cards-pack-subheading';
+  subheading.innerHTML = 'Choose from <span class="cards-pack-subheading-accent">Curated Offerings</span>';
+
   // Assemble layout
-  left.append(accordion);
+  left.append(subheading, accordion);
   images.forEach((img) => right.append(img));
   layout.append(left, right);
 

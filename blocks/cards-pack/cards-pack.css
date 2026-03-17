@@ -24,6 +24,20 @@
   justify-content: center;
 }
 
+/* "Choose from Curated Offerings" subheading */
+.cards-pack-subheading {
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 24px;
+  font-family: var(--body-font-family);
+}
+
+.cards-pack-subheading-accent {
+  color: #f04c23;
+  font-weight: 700;
+}
+
 .cards-pack-accordion {
   background-color: transparent;
 }
